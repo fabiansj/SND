@@ -6,7 +6,7 @@
                 <a href="#home">Home</a>
                 <a href="#about">About Us</a>
                 <div class="dropdown" id="produkDropdown">
-                    <a href="#products" class="dropbtn">Produk <span>&#9660;</span></a>
+                    <a href="#" class="dropbtn">Produk <span>&#9660;</span></a>
                     <div class="dropdown-content produklist">
                         <a href="#">Dirt Bike</a>
                         <a href="#">Velg Rapido</a>                      
@@ -14,7 +14,7 @@
                         <a href="#">Racing and Daily</a>                      
                     </div>
                 </div>
-                <a href="#menu">SND Apparel</a>
+                <a href="#">SND Apparel</a>
                 <a href="#">Racing Team</a>                
                 <div class="dropdown" id="galleryDropdown">
                     <a href="#" class="dropbtn">Gallery <span>&#9660;</span></a>

@@ -1,6 +1,7 @@
 console.log("out");
 $(document).ready(function () {
     $(".dropdown").on("click", function (e) {
+        e.preventDefault();
         // Dapatkan kelas yang sesuai dengan elemen yang diklik
         var targetClass = $(this).attr("id").replace("Dropdown", "list");
         // Toggle tampilan elemen dengan kelas yang sesuai
