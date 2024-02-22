@@ -6,8 +6,8 @@
                 <a href="#home">Home</a>
                 <a href="#about">About Us</a>
                 <div class="dropdown" id="produkDropdown">
-                    <a href="#products" class="dropbtn">Produk</a>
-                    <div class="dropdown-content">
+                    <a href="#products" class="dropbtn">Produk <span>&#9660;</span></a>
+                    <div class="dropdown-content produklist">
                         <a href="#">Dirt Bike</a>
                         <a href="#">Velg Rapido</a>                      
                         <a href="#">Motocross Part</a>                      
@@ -16,9 +16,9 @@
                 </div>
                 <a href="#menu">SND Apparel</a>
                 <a href="#">Racing Team</a>                
-                <div class="dropdown">
-                    <a href="#" class="dropbtn">Gallery</a>
-                    <div class="dropdown-content">
+                <div class="dropdown" id="galleryDropdown">
+                    <a href="#" class="dropbtn">Gallery <span>&#9660;</span></a>
+                    <div class="dropdown-content gallerylist">
                         <a href="#">Foto</a>
                         <a href="#">Video</a>                      
                     </div>
@@ -100,25 +100,34 @@
 /* Style dropdown container */
 .dropdown {
     position: relative;
-    margin: 0 10px; /* Beri jarak antara item navigasi */
+    margin: 0 10px;        
 }
 
 /* Style dropdown button */
-.dropbtn {    
+.dropbtn {        
     text-decoration: none;
     color: #333;
     display: inline-block;
+    position: relative;
+}
+
+.dropbtn span {
+    font-size: 15px; /* Mengatur ukuran font span menjadi lebih kecil */
+    vertical-align: text-bottom; /* Memastikan span berada di tengah secara vertikal */
+    margin-left: 3px; /* Menambahkan sedikit jarak antara teks dan tanda panah */
 }
 
 /* Style dropdown content (default hidden) */
-.dropdown-content {
+.dropdown-content {    
     display: none;
     position: absolute;    
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    margin-top: 5px; /* Beri jarak antara dropdown content dan button */
+    margin-top: 5px;
+    transition-delay: 0.2s; /* Penundaan sebelum dropdown muncul */
+
 }
 
 /* Style links inside the dropdown */
@@ -139,7 +148,7 @@
 
 /* Show the dropdown content when hover on dropdown */
 .dropdown:hover .dropdown-content {
-    display: block;
+    /* display: block; */
 }
 
 </style>

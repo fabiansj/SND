@@ -29,14 +29,13 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1.4rem 7%;
-    background-color: rgba(1, 1, 1, 0.8);
+    background-color: rgba(1, 1, 1, 0.6);
     border-bottom: 1px solid #513c28;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 9999;
-    opacity: 70%;
 }
 
 .navbar .navbar-logo {
@@ -110,8 +109,8 @@ body {
     height: 100%;
     width: 100%;
     font-size: 1.6rem;
-    color: var(--bg);
     padding: 1rem;
+    color: black;
 }
 
 .navbar .search-form label {
