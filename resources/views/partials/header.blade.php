@@ -8,7 +8,7 @@
                 <div class="dropdown" id="produkDropdown">
                     <a href="#products" class="dropbtn">Produk <span>&#9660;</span></a>
                     <div class="dropdown-content produklist">
-                        <a href="#">Dirt Bike test dkuu</a>
+                        <a href="#">Dirt Bike</a>
                         <a href="#">Velg Rapido</a>                      
                         <a href="#">Motocross Part</a>                      
                         <a href="#">Racing and Daily</a>                      
