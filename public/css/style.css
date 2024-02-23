@@ -653,7 +653,7 @@ color: var(--primary);
 /* Footer */
 footer {
     background-image: url("../img/demo_bg_2.jpg");
-    height: 610px;
+    height: 590px;
     background-size: cover;
     background-position: left;
     text-align: center;
@@ -742,6 +742,10 @@ footer .container-card .card .card-content .card-text-contact .card-contact-img{
 footer .container-card .card .card-content .card-text-contact .card-contact-img img{
     width: 25px;
     height: 25px;
+}
+
+footer .container-card .card .card-content .card-text-contact .card-contact-img img:nth-child(1){
+    margin-bottom: 25px;
 }
 
 footer .container-card .card .card-content .card-text-contact .card-contact-text{
