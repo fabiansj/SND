@@ -1,5 +1,92 @@
 <!-- Footer Section Start  -->
 <footer>
+    <div class="container-card">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">
+                    <h4><b>About Us</b></h4>
+                </div>
+                <div class="card-text-about1">
+                    <p>
+                        Produk-produk unggulan kami , dengan riset yang mendalam dan uji coba di lapangan secara
+                        maksimal, produk kami presisi, aman serta layak menjadi bagian dari kendaraan juara Anda.
+                    </p>
+                </div>
+                <div class="card-text-about2">
+                    <p>
+                        Hubungi team marketing kami, untuk info lebih lanjut mengenai produk juara.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">
+                    <h4>
+                        <b>LINKS</b>
+                    </h4>
+                </div>
+                <div class="card-text-links">
+                    <ul>
+                        <li><span>&#9658; </span>About Us</li>
+                        <li><span>&#9658; </span>Our Product</li>
+                        <li><span>&#9658; </span>Gallery </li>
+                        <li><span>&#9658; </span>Contact Us</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">
+                    <h4><b>CONTACT INFO</b></h4>
+                </div>
+                <div class="card-text-contact" style="white-space: pre-line;">
+                    <div class="card-contact-img"><img src="{{ asset('img/icon/location-dot-solid.svg') }}"></div>
+                    <div class="card-contact-text">
+                        <p>Jln.Gunung Batu, Bandung. 40514</p>
+                    </div>
+                </div>
+                <div class="card-text-contact">
+                    <div class="card-contact-img"><img src="{{ asset('img/icon/mobile-screen-solid.svg') }}"></div>
+                    <div class="card-contact-text">
+                        PHONE:
+                        <ul>
+                            <li>+62 812-1266-2293</li>
+                            <li>+62 8382-905-592</li>
+                            <li>+62 856-5903-6205</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-text-contact">
+                    <div class="card-contact-img"><img src="{{ asset('img/icon/email-reguler.svg') }}"></div>
+                    <div class="card-contact-text">
+                        EMAIL:
+                        <ul>
+                            <li>+62 812-1266-2293</li>
+                            <li>+62 8382-905-592</li>
+                            <li>+62 856-5903-6205</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">
+                    <h4>
+                        <b>Whatsapp CS</b>
+                    </h4>
+                </div>
+                <div class="card-text-cs">
+                    <button><img src="{{ asset('img/icon/whatsapplogowhite.svg') }}">CUSTOMER SERVICE 1</button>
+                    <button><img src="{{ asset('img/icon/whatsapplogowhite.svg') }}">CUSTOMER SERVICE 2</button>
+                    <button><img src="{{ asset('img/icon/whatsapplogowhite.svg') }}">CUSTOMER SERVICE 3</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- <div class="socials">
         <a href="#"><i data-feather="instagram"></i></a>
         <a href="#"><i data-feather="twitter"></i></a>
@@ -17,48 +104,5 @@
     <div class="credits">
         <p>Created by <a href="">fabianep</a>. | &copy; 2023.</p>
     </div>     -->
-        <div class="row">
-            <div class="item">About Us</div>
-            <div class="item">LINKS</div>
-            <div class="item">CONTACT INFO</div>
-            <div class="item">WHATSAPP CS</div>
-        </div>
-        <div class="row">
-            <div class="item"<p>
-            Produk-produk unggulan kami , dengan riset yang mendalam dan uji coba di lapangan secara maksimal, produk kami presisi, aman serta layak menjadi bagian dari kendaraan juara Anda.            
-            </p></div>
-            <div class="item">About Us</div>
-            <div class="item">Jln.Gunung Batu, Bandung. 40514</div>
-            <div class="item">Costumer Service 1</div>
-        </div>
-        <div class="row">
-            <div class="item"><p>Hubungi team marketing kami, untuk info lebih lanjut mengenai produk juara.</p></div>
-            <div class="item">Our Products</div>
-            <div class="item"><p>
-                PHONE:
-                - 12938123
-                - 2138912321
-                - 21938912831
-            </p></div>
-            <div class="item">Costumer Service 2</div>
-        </div>
-        <div class="row">
-            <div class="item">3</div>
-            <div class="item">Order</div>
-            <div class="item"><p>
-                EMAIL:
-                - marketing1
-                - marketing2
-                - marketing3
-            </p></div>
-            <div class="item">Costumer Service 3</div>
-        </div>    
-        <div class="row">
-            <div class="item">4</div>
-            <div class="item">Contact Us</div>
-            <div class="item"><p>5
-            </p></div>
-            <div class="item">6</div>
-        </div>    
 </footer>
 <!-- Footer Section End  -->

@@ -1,8 +1,9 @@
 @extends('layouts.master')
 @section('content')
-<a href="https://api.whatsapp.com/send/?phone=6283829050592&text&type=phone_number&app_absent=0" class="whatsapp-button" target="_blank">
-    <img src="{{ asset('img/walogo1.png') }}" alt="WhatsApp">
-</a>
+    <a href="https://api.whatsapp.com/send/?phone=6283829050592&text&type=phone_number&app_absent=0" class="whatsapp-button"
+        target="_blank">
+        <img src="{{ asset('img/walogo1.png') }}" alt="WhatsApp">
+    </a>
 
     <!-- Hero Section Start -->
     <section class="hero" id="home">
@@ -14,24 +15,6 @@
         </main>
     </section>
     <!-- Hero Section End -->
-
-    <!-- About Section Start -->
-    <Section class="about" id="about">
-        <h2><span>Tentang</span> Kami</h2>
-        <div class="row">
-            <div class="about-img">
-                <img src="{{ asset('img/tentangkami1.jpg') }}" alt="tentang kami">
-            </div>
-            <div class="content">
-                <h3>Kenapa memilih kopi kami?</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eveniet animi sequi molestias culpa!
-                    Voluptate.</p>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis repellendus saepe velit libero eveniet
-                    nobis vel dolores fugit ex eligendi.</p>
-            </div>
-        </div>
-    </Section>
-    <!-- About Section End -->
 
     <!-- Menu Section Start -->
     <section class="arrival" id="arrival">
@@ -50,9 +33,89 @@
                     </h3>
                     <div class="arrival_detail_show">
                         <a><I data-feather="search"></I> Detail Product</a>
-                    </div>                    
+                    </div>
                 </div>
-            </div>           
+            </div>
+            <div class="arrival-card">
+                <div class="arrival-new-product">
+                    <p>NEW PRODUCT</p>
+                </div>
+                <!-- <img src="../img/menu/menu1.jpg" alt="expresso"> -->
+                <img src="{{ asset('img/menu/7302velk_mx_king.png') }}" alt="expresso">
+                <div class="arrival-card-content">
+                    <p class="arrival-card-price">IDR 1.235.000</p>
+                    <h3 class="arrival-card-title">
+                        - SND RAPIDO-501 MX KING -
+                    </h3>
+                    <div class="arrival_detail_show">
+                        <a><I data-feather="search"></I> Detail Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="arrival-card">
+                <div class="arrival-new-product">
+                    <p>NEW PRODUCT</p>
+                </div>
+                <!-- <img src="../img/menu/menu1.jpg" alt="expresso"> -->
+                <img src="{{ asset('img/menu/7302velk_mx_king.png') }}" alt="expresso">
+                <div class="arrival-card-content">
+                    <p class="arrival-card-price">IDR 1.235.000</p>
+                    <h3 class="arrival-card-title">
+                        - SND RAPIDO-501 MX KING -
+                    </h3>
+                    <div class="arrival_detail_show">
+                        <a><I data-feather="search"></I> Detail Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="arrival-card">
+                <div class="arrival-new-product">
+                    <p>NEW PRODUCT</p>
+                </div>
+                <!-- <img src="../img/menu/menu1.jpg" alt="expresso"> -->
+                <img src="{{ asset('img/menu/7302velk_mx_king.png') }}" alt="expresso">
+                <div class="arrival-card-content">
+                    <p class="arrival-card-price">IDR 1.235.000</p>
+                    <h3 class="arrival-card-title">
+                        - SND RAPIDO-501 MX KING -
+                    </h3>
+                    <div class="arrival_detail_show">
+                        <a><I data-feather="search"></I> Detail Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="arrival-card">
+                <div class="arrival-new-product">
+                    <p>NEW PRODUCT</p>
+                </div>
+                <!-- <img src="../img/menu/menu1.jpg" alt="expresso"> -->
+                <img src="{{ asset('img/menu/7302velk_mx_king.png') }}" alt="expresso">
+                <div class="arrival-card-content">
+                    <p class="arrival-card-price">IDR 1.235.000</p>
+                    <h3 class="arrival-card-title">
+                        - SND RAPIDO-501 MX KING -
+                    </h3>
+                    <div class="arrival_detail_show">
+                        <a><I data-feather="search"></I> Detail Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="arrival-card">
+                <div class="arrival-new-product">
+                    <p>NEW PRODUCT</p>
+                </div>
+                <!-- <img src="../img/menu/menu1.jpg" alt="expresso"> -->
+                <img src="{{ asset('img/menu/7302velk_mx_king.png') }}" alt="expresso">
+                <div class="arrival-card-content">
+                    <p class="arrival-card-price">IDR 1.235.000</p>
+                    <h3 class="arrival-card-title">
+                        - SND RAPIDO-501 MX KING -
+                    </h3>
+                    <div class="arrival_detail_show">
+                        <a><I data-feather="search"></I> Detail Product</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="arrival-button">
             <button>EXPLORE ALL PRODUCT</button>
@@ -89,24 +152,24 @@
                     <div class="product-content">
                         <h3 x-text="item.name"></h3>
                         <div class="product-stars">
-                            <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
+                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <use href="{{ asset('img/feather-sprite.svg#star') }}" />
                             </svg>
-                            <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
+                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <use href="{{ asset('img/feather-sprite.svg#star') }}" />
                             </svg>
-                            <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
+                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <use href="{{ asset('img/feather-sprite.svg#star') }}" />
                             </svg>
-                            <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
+                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <use href="{{ asset('img/feather-sprite.svg#star') }}" />
                             </svg>
-                            <svg width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
+                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <use href="{{ asset('img/feather-sprite.svg#star') }}" />
                             </svg>
                         </div>
@@ -117,6 +180,24 @@
         </div>
     </section>
     <!-- Product Section End -->
+
+    <!-- About Section Start -->
+    <Section class="about" id="about">
+        <h2><span>Tentang</span> Kami</h2>
+        <div class="row">
+            <div class="about-img">
+                <img src="{{ asset('img/tentangkami1.jpg') }}" alt="tentang kami">
+            </div>
+            <div class="content">
+                <h3>Kenapa memilih kopi kami?</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eveniet animi sequi molestias culpa!
+                    Voluptate.</p>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis repellendus saepe velit libero eveniet
+                    nobis vel dolores fugit ex eligendi.</p>
+            </div>
+        </div>
+    </Section>
+    <!-- About Section End -->
 
     <!-- Contact Section Start -->
     <section class="contact" id="contact">
