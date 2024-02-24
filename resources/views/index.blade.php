@@ -18,6 +18,9 @@
 
     <!-- Menu Section Start -->
     <section class="arrival" id="arrival">
+        <div style="text-align: center;">
+            <img src="{{ asset('img/icon_m.png') }}" alt="mini_icon_snd">
+        </div>
         <h2><span>NEW</span> ARRIVAL</h2>
         <div class="row">
             <div class="arrival-card">
@@ -125,30 +128,54 @@
     `
     <!-- Product Section Start -->
     <section class="products" id="products" x-data="products">
-        <h2><span>Produk Unggulan </span>kami</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quaerat et labore non ullam sapiente.</p>
-
+        <div style="text-align: center;">
+            <img src="{{ asset('img/icon_m.png') }}" alt="mini_icon_snd">
+        </div>
+        <h2><span>PRODUK </span>PILIHAN</h2>
+        <div class="products-text-title">
+            <p class="text-title">Produk-produk unggulan kami , dengan riset yang mendalam dan uji coba di lapangan secara
+                maksimal, produk kami
+                presisi, aman serta layak menjadi bagian dari kendaraan juara Anda.
+            </p>
+        </div>
+        <div class="line"></div>
+        <div class="products-groups-button">
+            <button>DIRT BIKE</button>
+            <button>VLEG RAPIDO</button>
+            <button>CNC PORTING</button>
+            <button>BLOK KOPLING & ENGINE</button>
+            <button>MUFFLER</button>
+            <button>CARBURETOR</button>
+            <button>MOTORCROSS PART</button>
+            <button>RACING & DAILY</button>
+        </div>
+        <div class="line"></div>
         <div class="row">
             <template x-for="(item, index) in items" x-key="index">
                 <div class="product-card">
-                    <div class="product-icons">
+                    <div class="products-chevron">
+                        <p>SND</p>
+                    </div>
+                    <img src="{{ asset('img/products/velgmio.png') }}" alt="vleg_mio">
+                    {{-- <div class="product-icons" >
                         <a href="#" @click.prevent="$store.cart.add(item)">
                             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <use href="{{ asset('img/feather-sprite.svg#shopping-cart') }}" />
-                            </svg>
-                        </a>
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <use href="{{ asset('img/feather-sprite.svg#shopping-cart') }}" />
+                        </svg>
+                    </a>
+                        ini adalah bagian gambar tambah ke cart dan detail
                         <a href="#" class="item-detail-button">
                             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round">
                                 <use href="{{ asset('img/feather-sprite.svg#eye') }}" />
                             </svg>
                         </a>
-                    </div>
-                    <div class="product-image">
-                        <!-- <img :src="`../img/products/${item.img}`" :alt="item.name"> -->
-                        <img :src="`{{ asset('img/products/${item.img}') }}`" :alt="item.name">
-                    </div>
+                    </div> --}}
+                    {{-- <div class="product-image"> --}}
+                    {{-- <!-- <img :src="`../img/products/${item.img}`" :alt="item.name"> --> --}}
+                    {{-- <img :src="`{{ asset('img/products/${item.img}') }}`" :alt="item.name"> --}}
+                    {{-- </div> --}}
                     <div class="product-content">
                         <h3 x-text="item.name"></h3>
                         <div class="product-stars">
