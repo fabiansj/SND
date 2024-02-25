@@ -16,7 +16,7 @@
     </section>
     <!-- Hero Section End -->
 
-    <!-- Menu Section Start -->
+    <!-- Arrival Section Start -->
     <section class="arrival" id="arrival">
         <div style="text-align: center;">
             <img src="{{ asset('img/icon_m.png') }}" alt="mini_icon_snd">
@@ -124,7 +124,7 @@
             <button>EXPLORE ALL PRODUCT</button>
         </div>
     </section>
-    <!-- Menu Section End -->
+    <!-- Arrival Section End -->
     `
     <!-- Product Section Start -->
     <section class="products" id="products" x-data="products">
@@ -176,31 +176,34 @@
                     {{-- <!-- <img :src="`../img/products/${item.img}`" :alt="item.name"> --> --}}
                     {{-- <img :src="`{{ asset('img/products/${item.img}') }}`" :alt="item.name"> --}}
                     {{-- </div> --}}
+                    {{-- <div class="product-stars">
+                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                        </svg>
+                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                        </svg>
+                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                        </svg>
+                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                        </svg>
+                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                        </svg>
+                    </div> --}}
                     <div class="product-content">
-                        <h3 x-text="item.name"></h3>
-                        <div class="product-stars">
-                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                            </svg>
-                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                            </svg>
-                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                            </svg>
-                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                            </svg>
-                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                            </svg>
-                        </div>
                         <div class="product-price"><span x-text="rupiah(item.price)"></span></div>
+                        <p x-text="item.name"></p>
+                        <div class="product-overflow-content">
+                            <a><i data-feather="circle"></i> Detail Product</a>
+                        </div>
                     </div>
                 </div>
             </template>

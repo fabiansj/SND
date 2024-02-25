@@ -554,6 +554,7 @@ color: var(--primary);
 .products-groups-button{
     padding-left: 20px;
 }
+
 .products-groups-button button{
     /* background-color: red; */
     margin: 5px 20px 20px 5px;
@@ -575,7 +576,7 @@ color: var(--primary);
 .products .row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
-    gap: 1.5rem;
+    gap: 4rem;
     margin: 4rem 0;
 }
 
@@ -583,13 +584,14 @@ color: var(--primary);
     text-align: center;
     background-color: #F6F6F6;
     width: 100%;
-    height: 520px;
+    height: 100%;
+    max-height: 500px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.products .product-card:hover img{
+.products .product-card:hover img {
     right: 0px;
 }
 
@@ -606,10 +608,11 @@ color: var(--primary);
     transform: translate(-50%, -50%) rotate(315deg);
     top: 30%;
     left: 33%;
-    font-size: 20px;
+    font-size: 1.2em;
+    max-width: 100%;
     position: relative;
 }
-
+/*
 .products .product-icons {
     display: flex;
     justify-content: center;
@@ -631,21 +634,80 @@ color: var(--primary);
 .products .product-icons a:hover {
     background-color: var(--primary);
     border: 1px solid var(--primary);
-}
+} */
 
 .products .product-card img {
     position: relative;
     width: 100%;
-    padding: 0px 5px 10px 5px;
-    bottom: 20px;
     right: 30px;
     transition: right 0.3s ease;
+    padding: 0 30px;
 }
 
-.products .product-content h3 {
+.products .product-content {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.products .product-price {
+    text-align: center;
+    position: relative;
+    bottom: -50px;
+}
+
+.products .product-price span{
     font-size: 2rem;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+.products .product-content p {
+    font-size: 1em;
+    max-width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: rgb(117, 117, 117);
+    position: relative;
+    bottom: -50px;
+}
+
+.products .product-content .product-overflow-content {
+    background-color: white;
+    width: 100%;
+    height: 70px;
+    position: relative;
+    bottom: -60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: bottom 0.3s ease;
+}
+
+.products .product-card:hover .product-content .product-overflow-content {
+    bottom: 0px;
+}
+
+.products .product-content .product-overflow-content a{
+    background-color: #F3B136;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 1.5vw;
+    border: 1px solid silver;
+    cursor: pointer;
+}
+
+.products .product-content .product-overflow-content a:hover{
+    background-color: var(--card-info);
+}
+.products .product-content .product-overflow-content a i{
+    color: white;
+}
+
+/*
 .products .product-stars {
     font-size: 1.7rem;
     padding: 0.8rem;
@@ -655,17 +717,7 @@ color: var(--primary);
 .products .product-stars .stars-full {
     fill: var(--primary);
 }
-
-.products .product-price {
-    font-size: 1.3rem;
-    font-weight: bold;
-}
-
-/* .products .product-price span{
-    text-decoration: line-through;
-    font-weight: lighter;
-    font-size: 1rem;
-} */
+*/
 
 /* Contact */
 .contact .row {
@@ -950,7 +1002,7 @@ footer .container-card .card .card-content .card-text-cs button img{
     }
 
     .products .row {
-        grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
     }
 }
 /* Tablet */
@@ -961,7 +1013,7 @@ footer .container-card .card .card-content .card-text-cs button img{
     }
 
     .products .row {
-        grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
     }
 
     #hamburger-menu {
@@ -1032,6 +1084,10 @@ footer .container-card .card .card-content .card-text-cs button img{
         top: 18%;
     }
 
+    .products .product-content .product-overflow-content a{
+        font-size: 2vh;
+    }
+
     .contact .row {
         flex-wrap: wrap;
     }
@@ -1066,5 +1122,9 @@ footer .container-card .card .card-content .card-text-cs button img{
 
     .products .row {
         grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+    }
+
+    .products .product-content .product-overflow-content a{
+        font-size: 6vw;
     }
 }
