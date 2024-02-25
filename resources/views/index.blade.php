@@ -134,8 +134,7 @@
         <h2><span>PRODUK </span>PILIHAN</h2>
         <div class="products-text-title">
             <p class="text-title">Produk-produk unggulan kami , dengan riset yang mendalam dan uji coba di lapangan secara
-                maksimal, produk kami
-                presisi, aman serta layak menjadi bagian dari kendaraan juara Anda.
+                maksimal, produk kami presisi, aman serta layak menjadi bagian dari kendaraan juara Anda.
             </p>
         </div>
         <div class="line"></div>
