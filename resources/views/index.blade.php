@@ -134,8 +134,7 @@
         <h2><span>PRODUK </span>PILIHAN</h2>
         <div class="products-text-title">
             <p class="text-title">Produk-produk unggulan kami , dengan riset yang mendalam dan uji coba di lapangan secara
-                maksimal, produk kami
-                presisi, aman serta layak menjadi bagian dari kendaraan juara Anda.
+                maksimal, produk kami presisi, aman serta layak menjadi bagian dari kendaraan juara Anda.
             </p>
         </div>
         <div class="line"></div>
@@ -157,7 +156,7 @@
                         <p>SND</p>
                     </div>
                     <img src="{{ asset('img/products/velgmio.png') }}" alt="vleg_mio">
-                    {{-- <div class="product-icons" >
+                    <!-- <div class="product-icons" >
                         <a href="#" @click.prevent="$store.cart.add(item)">
                             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -171,13 +170,8 @@
                                 <use href="{{ asset('img/feather-sprite.svg#eye') }}" />
                             </svg>
                         </a>
-                    </div> --}}
-                    {{-- <div class="product-image"> --}}
-                    {{-- <!-- <img :src="`../img/products/${item.img}`" :alt="item.name"> --> --}}
-                    {{-- <img :src="`{{ asset('img/products/${item.img}') }}`" :alt="item.name"> --}}
-                    {{-- </div> --}}
-                    <div class="product-content">
-                        <h3 x-text="item.name"></h3>
+                    </div>               -->
+                    <!-- <div class="product-content">                        
                         <div class="product-stars">
                             <svg width="24" height="24" fill="currentColor" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -201,7 +195,11 @@
                             </svg>
                         </div>
                         <div class="product-price"><span x-text="rupiah(item.price)"></span></div>
+                        <p x-text="item.name"></p>
                     </div>
+                    <div class="overflow-content">
+                        <button>DETAIL PRODUCT</button>
+                    </div> -->
                 </div>
             </template>
         </div>

@@ -14,33 +14,33 @@ document.addEventListener("alpine:init", () => {
         items: [
             {
                 id: 1,
-                name: "robusta brazil",
+                name: "Velg mio j/mio gt/fino/xride",
                 img: "beans1.jpg",
-                price: 20000,
+                price: 1525000,
             },
             {
                 id: 2,
-                name: "Arabica blend",
+                name: "Velg mio j/mio gt/fino/xride",
                 img: "beans2.jpg",
-                price: 25000,
+                price: 1525000,
             },
             {
                 id: 3,
-                name: "primo Passo",
+                name: "Velg mio j/mio gt/fino/xride",
                 img: "beans3.jpg",
-                price: 30000,
+                price: 1525000,
             },
             {
                 id: 4,
-                name: "aceh gayo",
+                name: "Velg mio j/mio gt/fino/xride",
                 img: "beans4.jpg",
-                price: 35000,
+                price: 1525000,
             },
             {
                 id: 5,
-                name: "sumatra mandheling",
+                name: "Velg mio j/mio gt/fino/xride",
                 img: "beans5.jpg",
-                price: 40000,
+                price: 1525000,
             },
         ],
     }));
