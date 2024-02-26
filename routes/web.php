@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ViewsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 
@@ -18,8 +19,16 @@ use App\Http\Controllers\PaymentController;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('index');
-});
-// Route::post('/checkout', [PaymentController::class, 'checkout'])->name('mdcheckout');
+Route::redirect('/', 'index');
+Route::redirect('home', 'index');
+Route::redirect('snd', 'index');
+Route::redirect('admin', 'index');
+Route::redirect('produk', 'product');
 
+
+Route::get('index', [ViewsController::class, 'index'])->name('about.show');
+Route::get('about', [ViewsController::class, 'aboutshow'])->name('about.show');
+Route::get('contact', [ViewsController::class, 'contactshow'])->name('contact.show');
+Route::get('product', [ViewsController::class, 'productshow'])->name('product.show');
+Route::get('photo', [ViewsController::class, 'photoshow'])->name('photo.show');
+Route::get('video', [ViewsController::class, 'videoshow'])->name('video.show');

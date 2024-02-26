@@ -3,8 +3,8 @@
         <img src="/img/logo.png" alt="">
     </a>
     <div class="navbar-nav">
-        <a href="#home">Home</a>
-        <a href="#about">About Us</a>
+        <a href="{{ asset('/') }}">Home</a>
+        <a href="{{ asset('about') }}">About Us</a>
         <div class="dropdown" id="produkDropdown">
             <a href="#" class="dropbtn">Produk <span>&#9660;</span></a>
             <div class="dropdown-content produklist">
@@ -19,11 +19,11 @@
         <div class="dropdown" id="galleryDropdown">
             <a href="#" class="dropbtn">Gallery <span>&#9660;</span></a>
             <div class="dropdown-content gallerylist">
-                <a href="#">Foto</a>
-                <a href="#">Video</a>
+                <a href="{{ asset('photo') }}">Foto</a>
+                <a href="{{ asset('video') }}">Video</a>
             </div>
         </div>
-        <a href="#contact">Contact</a>
+        <a href="{{ asset('contact') }}">Contact</a>
     </div>
     <div class="navbar-extra">
         <a href="#" id="search-button"><i data-feather="search"></i></a>

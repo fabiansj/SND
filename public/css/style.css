@@ -329,25 +329,46 @@ color: var(--primary);
 .about,
 .arrival,
 .contact,
-.products {
-    padding: 5rem 7% 4rem;
+.products,
+.ourteam {
+    padding: 5rem 6% 4rem;
 }
 
 .about h2,
 .arrival h2,
 .contact h2,
-.products h2 {
+.products h2,
+.ourteam h2 {
     text-align: center;
     font-size: 2.6rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     color: var(--primary);
 }
 
 .about h2 span,
 .arrival h2 span,
 .contact h2 span,
-.products h2 span {
+.products h2 span,
+.ourteam h2 span {
     color: black;
+}
+
+.hero-img{
+    background-color: red;
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: left;
+    position: relative;
+}
+
+.hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .about .container-about {
@@ -360,6 +381,7 @@ color: var(--primary);
 
 .about .container-about .row .about-img {
     flex: 1 1 45rem;
+    position: relative;
 }
 
 .about .container-about .row .about-img img {
@@ -378,14 +400,75 @@ color: var(--primary);
 .about .container-about .row .content h3 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 .about .container-about .row .content p {
     margin-bottom: 0.8rem;
     font-size: 1.3rem;
-    font-weight: 100;
     line-height: 1.6;
+    color: black;
 }
+
+/* About Our Team */
+.ourteam{
+    background-color: white;
+}
+
+.ourteam .container-ourteam .ourteam-card{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ourteam .container-ourteam .ourteam-card .ourteam-img:hover img,
+.ourteam .container-ourteam .ourteam-card .ourteam-img:hover h1,
+.ourteam .container-ourteam .ourteam-card .ourteam-img:hover p{
+    transform: scale(1.1);
+}
+
+.ourteam .container-ourteam .ourteam-card .ourteam-img {
+    width: auto;
+    height: auto;
+}
+.ourteam .container-ourteam .ourteam-card .ourteam-img img{
+    /* border: 1px solid red; */
+    padding: 0 9px;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ourteam .container-ourteam .ourteam-card .ourteam-img h1{
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    bottom: 120px;
+    color: white;
+    font-size: 2.8em;
+    left: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ourteam .container-ourteam .ourteam-card .ourteam-img p{
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    bottom: 120px;
+    color: white;
+    font-size: 1.5em;
+    left: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* .ourteam .container-ourteam .ourteam-card .ourteam-img .linier-img{
+    position: relative;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.753) 80%);
+    height: 200px;
+    margin: 0 9px;
+    bottom: 265px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
+} */
 
 /* Arrival */
 .arrival h2,
@@ -531,6 +614,7 @@ color: var(--primary);
     border: 2px solid #fff;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .arrival-button button:hover {
@@ -1157,6 +1241,9 @@ footer .container-card .card .card-content .card-text-cs button img {
     .modal-content {
         flex-wrap: wrap;
     }
+    /* .ourteam .container-ourteam .ourteam-card .ourteam-img .linier-img{
+        bottom: 254px;
+    } */
 }
 
 /* Mobile */
@@ -1181,4 +1268,13 @@ footer .container-card .card .card-content .card-text-cs button img {
     .products .product-content .product-overflow-content a {
         font-size: 6vw;
     }
+
+    /* .ourteam .container-ourteam .ourteam-card .ourteam-img .linier-img{
+        bottom: 245px;
+    }
+
+    .ourteam .container-ourteam .ourteam-card .ourteam-img:hover .linier-img  {
+        transform: scale(1.1);
+        height: 220px;
+    } */
 }
