@@ -156,47 +156,43 @@
                         <p>SND</p>
                     </div>
                     <img src="{{ asset('img/products/velgmio.png') }}" alt="vleg_mio">
-                    {{-- <div class="product-icons" >
-                        <a href="#" @click.prevent="$store.cart.add(item)">
-                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <use href="{{ asset('img/feather-sprite.svg#shopping-cart') }}" />
-                        </svg>
-                    </a>
-                        ini adalah bagian gambar tambah ke cart dan detail
-                        <a href="#" class="item-detail-button">
-                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                    <!-- <div class="product-icons" >
+                            <a href="#" @click.prevent="$store.cart.add(item)">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round">
-                                <use href="{{ asset('img/feather-sprite.svg#eye') }}" />
+                                <use href="{{ asset('img/feather-sprite.svg#shopping-cart') }}" />
                             </svg>
                         </a>
-                    </div> --}}
-                    {{-- <div class="product-image"> --}}
-                    {{-- <!-- <img :src="`../img/products/${item.img}`" :alt="item.name"> --> --}}
-                    {{-- <img :src="`{{ asset('img/products/${item.img}') }}`" :alt="item.name"> --}}
-                    {{-- </div> --}}
-                    {{-- <div class="product-stars">
-                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                        </svg>
-                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                        </svg>
-                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                        </svg>
-                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                        </svg>
-                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                        </svg>
-                    </div> --}}
+                            ini adalah bagian gambar tambah ke cart dan detail
+                            <a href="#" class="item-detail-button">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <use href="{{ asset('img/feather-sprite.svg#eye') }}" />
+                                </svg>
+                            </a>
+                        </div>                 -->
+                    <!-- <div class="product-stars">
+                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                            </svg>
+                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                            </svg>
+                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                            </svg>
+                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                            </svg>
+                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                            </svg>
+                        </div> -->
                     <div class="product-content">
                         <div class="product-price"><span x-text="rupiah(item.price)"></span></div>
                         <p x-text="item.name"></p>
@@ -207,23 +203,32 @@
                 </div>
             </template>
         </div>
+        <div class="arrival-button">
+            <button>EXPLORE ALL PRODUCT</button>
+        </div>
     </section>
     <!-- Product Section End -->
 
     <!-- About Section Start -->
     <Section class="about" id="about">
         <h2><span>Tentang</span> Kami</h2>
-        <div class="row">
-            <div class="about-img">
-                <img src="{{ asset('img/tentangkami1.jpg') }}" alt="tentang kami">
+        <div class="container-about">
+            <div class="row">
+                <div class="about-img">
+                    <img src="{{ asset('img/tentangkami1.jpg') }}" alt="tentang kami">
+                </div>
+                <div class="content">
+                    <h3>Kenapa memilih kopi kami?</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eveniet animi sequi molestias culpa!
+                        Voluptate.</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis repellendus saepe velit libero
+                        eveniet
+                        nobis vel dolores fugit ex eligendi.</p>
+                </div>
             </div>
-            <div class="content">
-                <h3>Kenapa memilih kopi kami?</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam eveniet animi sequi molestias culpa!
-                    Voluptate.</p>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis repellendus saepe velit libero eveniet
-                    nobis vel dolores fugit ex eligendi.</p>
-            </div>
+        </div>
+        <div class="container-ourteam">
+            
         </div>
     </Section>
     <!-- About Section End -->

@@ -14,7 +14,7 @@
                 <a href="#">Racing and Daily</a>
             </div>
         </div>
-        <a href="#">SND Apparel</a>
+        <!-- <a href="#">SND Apparel</a> -->
         <a href="#">Racing Team</a>
         <div class="dropdown" id="galleryDropdown">
             <a href="#" class="dropbtn">Gallery <span>&#9660;</span></a>
