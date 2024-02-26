@@ -100,7 +100,6 @@
     /* Style dropdown container */
     .dropdown {
         position: relative;
-        margin: 0 10px;
     }
 
     /* Style dropdown button */
@@ -113,11 +112,8 @@
 
     .dropbtn span {
         font-size: 15px;
-        /* Mengatur ukuran font span menjadi lebih kecil */
         vertical-align: text-bottom;
-        /* Memastikan span berada di tengah secara vertikal */
         margin-left: 3px;
-        /* Menambahkan sedikit jarak antara teks dan tanda panah */
     }
 
     /* Style dropdown content (default hidden) */
@@ -131,7 +127,6 @@
         margin-top: 5px;
         transition-delay: 0.2s;
         /* Penundaan sebelum dropdown muncul */
-
     }
 
     /* Style links inside the dropdown */

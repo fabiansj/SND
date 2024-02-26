@@ -34,8 +34,8 @@
                         <a href="{{ asset('product') }}" style="color:silver;">
                             <li><span>&#9658; </span>Our Product</li>
                         </a>
-                        <a href="{{ asset('gallery') }}" style="color:silver;">
-                            <li><span>&#9658; </span>Gallery </li>
+                        <a href="#" style="color:silver;">
+                            <li><span>&#9658; </span>Order </li>
                         </a>
                         <a href="{{ asset('contact') }}" style="color:silver;">
                             <li><span>&#9658; </span>Contact Us</li>

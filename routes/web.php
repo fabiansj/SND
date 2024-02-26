@@ -19,6 +19,10 @@ use App\Http\Controllers\PaymentController;
 //     return view('welcome');
 // });
 
+Route::get('/test', function () {
+    return view('test');
+});
+
 Route::redirect('/', 'index');
 Route::redirect('home', 'index');
 Route::redirect('snd', 'index');
