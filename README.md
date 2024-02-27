@@ -3,6 +3,8 @@ SKRIPSI SND E-COMMERCE
 </p>
 <p align="center">
 THIS WEBSITE WILL USE : HTML, CSS, Javascript, Jquery, Ajax, PHP
+</p>
+<p align="center">
 FRAMEWORK USE : Laravel
 </p>
 <p align="center">
