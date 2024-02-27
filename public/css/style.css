@@ -50,14 +50,14 @@ body {
     color: var(--primary);
 }
 
-.navbar .navbar-nav a {
+/* .navbar .navbar-nav a {
     color: #fff;
     display: inline-block;
     font-size: 1.3rem;
     margin: 0 1rem;
-}
+} */
 
-.navbar .navbar-nav a:hover {
+/* .navbar .navbar-nav a:hover {
     color: var(--primary);
 }
 
@@ -72,7 +72,7 @@ body {
 
 .navbar .navbar-nav a:hover::after {
     transform: scaleX(0.5);
-}
+} */
 
 .navbar .navbar-extra a {
     color: #fff;
@@ -353,7 +353,7 @@ color: var(--primary);
     color: black;
 }
 
-.hero-img{
+.hero-img {
     background-color: red;
     width: 100%;
     height: 400px;
@@ -411,11 +411,11 @@ color: var(--primary);
 }
 
 /* About Our Team */
-.ourteam{
+.ourteam {
     background-color: white;
 }
 
-.ourteam .container-ourteam .ourteam-card{
+.ourteam .container-ourteam .ourteam-card {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -423,7 +423,7 @@ color: var(--primary);
 
 .ourteam .container-ourteam .ourteam-card .ourteam-img:hover img,
 .ourteam .container-ourteam .ourteam-card .ourteam-img:hover h1,
-.ourteam .container-ourteam .ourteam-card .ourteam-img:hover p{
+.ourteam .container-ourteam .ourteam-card .ourteam-img:hover p {
     transform: scale(1.1);
 }
 
@@ -431,7 +431,7 @@ color: var(--primary);
     width: auto;
     height: auto;
 }
-.ourteam .container-ourteam .ourteam-card .ourteam-img img{
+.ourteam .container-ourteam .ourteam-card .ourteam-img img {
     /* border: 1px solid red; */
     padding: 0 9px;
     width: 100%;
@@ -439,7 +439,7 @@ color: var(--primary);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.ourteam .container-ourteam .ourteam-card .ourteam-img h1{
+.ourteam .container-ourteam .ourteam-card .ourteam-img h1 {
     position: relative;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
@@ -450,7 +450,7 @@ color: var(--primary);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.ourteam .container-ourteam .ourteam-card .ourteam-img p{
+.ourteam .container-ourteam .ourteam-card .ourteam-img p {
     position: relative;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
@@ -841,7 +841,7 @@ color: var(--primary);
     padding: 2rem;
     font-size: 1.7rem;
     background: none;
-    color: #fff;
+    color: #000;
 }
 
 .contact .row form .btn {
@@ -849,7 +849,7 @@ color: var(--primary);
     display: inline-block;
     padding: 1rem 3rem;
     font-size: 1.7rem;
-    color: #fff;
+    color: #000;
     background-color: var(--primary);
     cursor: pointer;
 }
@@ -1012,7 +1012,7 @@ footer
     list-style-type: none;
 }
 
-footer .container-card .card .card-content .card-text-cs button {
+footer .container-card .card .card-content .card-text-cs a {
     background-color: #25d366;
     border: 1px solid #fff;
     border-radius: 50px;
@@ -1032,13 +1032,13 @@ footer .container-card .card .card-content .card-text-cs button {
         box-shadow 0.3s ease;
 }
 
-footer .container-card .card .card-content .card-text-cs button:hover {
+footer .container-card .card .card-content .card-text-cs a:hover {
     background-color: #128c7e;
     transform: scale(1.05);
     box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
-footer .container-card .card .card-content .card-text-cs button img {
+footer .container-card .card .card-content .card-text-cs a img {
     width: 25px;
     height: 25px;
     margin-right: 5px;

@@ -87,9 +87,9 @@
                     </h4>
                 </div>
                 <div class="card-text-cs">
-                    <button><img src="{{ asset('img/icon/whatsapplogowhite.svg') }}">CUSTOMER SERVICE 1</button>
-                    <button><img src="{{ asset('img/icon/whatsapplogowhite.svg') }}">CUSTOMER SERVICE 2</button>
-                    <button><img src="{{ asset('img/icon/whatsapplogowhite.svg') }}">CUSTOMER SERVICE 3</button>
+                    <a href="https://api.whatsapp.com/send?phone=6281212662293&text=Halo%20Admin%20saya%20ingin%20bertanya%20mengenai%20produk%20SND%20RACING" target="_blank"><img src="{{ asset('img/icon/whatsapplogowhite.svg') }}">CUSTOMER SERVICE 1</a>
+                    <a href="https://api.whatsapp.com/send?phone=6283829050592&text=Halo%20Admin%20saya%20ingin%20bertanya%20mengenai%20produk%20SND%20RACING" target="_blank"><img src="{{ asset('img/icon/whatsapplogowhite.svg') }}">CUSTOMER SERVICE 2</a>
+                    <a href="https://api.whatsapp.com/send?phone=6285659036205&text=Halo%20Admin%20saya%20ingin%20bertanya%20mengenai%20produk%20SND%20RACING" target="_blank"><img src="{{ asset('img/icon/whatsapplogowhite.svg') }}">CUSTOMER SERVICE 3</a>
                 </div>
             </div>
         </div>

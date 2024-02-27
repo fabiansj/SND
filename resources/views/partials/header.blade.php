@@ -3,6 +3,59 @@
         <img src="/img/logo.png" alt="">
     </a>
     <div class="navbar-nav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a>
+            <li><a href="#">Produk <span>&#9660;</span></a>
+            <ul>
+                <li><a href="#">Produk 1</a>
+                    <ul>
+                        <li>Produk a</li>
+                        <li>Produk b</li>
+                        <li>Produk c</li>
+                    </ul>
+                </li>                
+                <li><a href="#">Produk 2</a>
+                    <ul>
+                        <li>Produk a</li>
+                        <li>Produk b</li>
+                        <li>Produk c</li>
+                    </ul>
+                </li>                
+                <li><a href="#">Produk 3</a>
+                    <ul>
+                        <li>Produk a</li>
+                        <li>Produk b</li>
+                        <li>Produk c</li>
+                    </ul>
+                </li>                
+                <li><a href="#">Produk 4</a>
+                    <ul>
+                        <li>Produk a</li>
+                        <li>Produk b</li>
+                        <li>Produk c</li>
+                    </ul>
+                </li>                
+                <li><a href="#">Produk 5</a>
+                    <ul>
+                        <li>Produk a</li>
+                        <li>Produk b</li>
+                        <li>Produk c</li>
+                    </ul>
+                </li>                                          
+            </ul>
+            </li>
+            <li><a href="#">Racing Team</a></li>
+            <li><a href="#">Gallery <span>&#9660;</span></a>
+                <ul>
+                    <li><a href="#">Foto</a></li>
+                    <li><a href="#">Video</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+    <!-- <div class="navbar-nav">
         <a href="{{ asset('/') }}">Home</a>
         <a href="{{ asset('about') }}">About Us</a>
         <div class="dropdown" id="produkDropdown">
@@ -14,7 +67,7 @@
                 <a href="#">Racing and Daily</a>
             </div>
         </div>
-        <!-- <a href="#">SND Apparel</a> -->
+        <a href="#">SND Apparel</a>
         <a href="#">Racing Team</a>
         <div class="dropdown" id="galleryDropdown">
             <a href="#" class="dropbtn">Gallery <span>&#9660;</span></a>
@@ -24,7 +77,7 @@
             </div>
         </div>
         <a href="{{ asset('contact') }}">Contact</a>
-    </div>
+    </div> -->
     <div class="navbar-extra">
         <a href="#" id="search-button"><i data-feather="search"></i></a>
         <a href="#" id="shopping-cart-button">
@@ -92,18 +145,94 @@
 <style>
     /* Style navbar container */
     .navbar-nav {
-        display: flex;
+        display: flex;        
         justify-content: center;
         /* Mengatur item navigasi agar berada di tengah */
     }
 
-    /* Style dropdown container */
-    .dropdown {
-        position: relative;
+    .navbar-nav ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
     }
 
-    /* Style dropdown button */
-    .dropbtn {
+    .navbar-nav ul li {
+        position: relative;
+        float: left;
+    }
+
+    .navbar-nav ul li a {
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .navbar-nav ul ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        display: none;
+        background-color: #fff;
+        border: 1px solid #ccc;
+    }
+
+    .navbar-nav ul ul li {
+        float: none;
+        width: 200px;
+    }
+
+    .navbar-nav ul ul a {
+        padding: 8px 20px;
+        color: black;
+    }
+
+    .navbar-nav ul li:hover > ul {
+        display: block;
+    }
+
+    /* .navbar .navbar-nav ul {
+        padding: 0px;
+        margin: 0px;
+        list-style-type: none;        
+    }
+    
+    .navbar .navbar-nav ul li{
+        position: relative;
+        float: left;
+
+    }
+    
+    .navbar .navbar-nav ul li a {
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: white
+    }
+    
+    .navbar .navbar-nav ul ul {
+        border: 1px solid green;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        display: none;
+        background-color: #fff;        
+    }
+
+    .navbar .navbar-nav ul li:hover > ul {
+        display: block;
+    } */
+    /* .navbar .navbar-nav .dropdown-content {
+        border: 1px solid black;
+    }
+     */
+    /* Style dropdown container */
+    /* .dropdown {
+        position: relative;
+    } */
+    
+    /* .dropbtn {
         text-decoration: none;
         color: #333;
         display: inline-block;
@@ -114,10 +243,10 @@
         font-size: 15px;
         vertical-align: text-bottom;
         margin-left: 3px;
-    }
+    } */
 
     /* Style dropdown content (default hidden) */
-    .dropdown-content {
+    /* .dropdown-content {
         display: none;
         position: absolute;
         background-color: #f9f9f9;
@@ -126,27 +255,27 @@
         z-index: 1;
         margin-top: 5px;
         transition-delay: 0.2s;
-        /* Penundaan sebelum dropdown muncul */
-    }
+        Penundaan sebelum dropdown muncul
+    } */
 
     /* Style links inside the dropdown */
-    .dropdown-content a {
+    /* .dropdown-content a {
         color: black !important;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
         width: 85%;
-    }
+    } */
 
     /* Change color of links on hover */
-    .dropdown-content a:hover {
-        /* background-color: #b9b1b1;    */
+    /* .dropdown-content a:hover {
+        background-color: #b9b1b1;   
         background-color: yellow;
         text-decoration: none;
-    }
+    } */
 
     /* Show the dropdown content when hover on dropdown */
-    .dropdown:hover .dropdown-content {
-        /* display: block; */
-    }
+    /* .dropdown:hover .dropdown-content {
+        display: block;
+    } */
 </style>

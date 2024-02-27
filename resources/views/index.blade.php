@@ -1,11 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <a href="https://api.whatsapp.com/send/?phone=6283829050592&text&type=phone_number&app_absent=0" class="whatsapp-button"
-        target="_blank">
-        <img src="{{ asset('img/walogo1.png') }}" alt="WhatsApp">
-    </a>
-
-    <!-- Hero Section Start -->
+        <!-- Hero Section Start -->
     <section class="hero" id="home">
         <main class="content">
             <h1>Spare Part <span>Berkualitas</span></h1>
