@@ -1157,7 +1157,7 @@ footer .container-card .card .card-content .card-text-cs a img {
     #hamburger-menu {
         display: inline-block;
     }
-    .navbar .navbar-nav {
+    /* .navbar .navbar-nav {
         position: absolute;
         top: 100%;
         right: -100%;
@@ -1189,7 +1189,7 @@ footer .container-card .card .card-content .card-text-cs a img {
 
     .navbar .navbar-nav a:hover::after {
         transform: scaleX(0.2);
-    }
+    } */
 
     .navbar .search-form {
         width: 90%;
