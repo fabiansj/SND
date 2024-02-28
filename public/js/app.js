@@ -3,28 +3,65 @@ $(document).ready(function() {
     $('#hamburger-menu').on('click', function(e){
         e.preventDefault();
     })
-    $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content)').on('click', function(event) {
-            // Menghentikan penyebaran event klik
-            event.stopPropagation();                
-
-            // Menutup submenu 'Gallery' jika terbuka
-        $('.navbar .na vbar-nav .dropdown-list > li:has(.dropdown-content.gallery) .dropdown-content').removeClass('active');
-
-                // Membuka submenu 'Produk'
+    $('.navbar .navbar-nav .dropdown-list > li').on('click', function(e){        
+        $(this).not($(this)).find('.dropdown-content').removeClass('active')
         $(this).find('.dropdown-content').toggleClass('active');
+        console.log('aman')
+    })
+    $('.navbar .navbar-nav .dropdown-list .dropdown-content > li').on('click', function(e){
+        e.stopPropagation();
+        $(this).not($(this)).find('dropdown-content-list').removeClass('active');
+        $(this).find('.dropdown-content-list').toggleClass('active');
+    })
+    // $('.navbar .navbar-nav .dropdown-list li').on('click', function(event) {
+    // // $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content)').on('click', function(event) {
+    //         // Menghentikan penyebaran event klik
+    //         event.stopPropagation();                             
+    //         // Menutup submenu 'Gallery' jika terbuka
+    //     $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content.gallery) .dropdown-content').removeClass('active');
+
+    //             // Membuka submenu 'Produk'
+    //     $(this).find('.dropdown-content').toggleClass('active');
+    //     console.log('ya')
+    // });
+
+    //     // Menangani klik pada submenu 'Gallery'
+    // $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content.gallery)').on('click', function(event) {
+    // // $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content.gallery)').on('click', function(event) {
+    //         // Menghentikan penyebaran event klik
+    //         event.stopPropagation();                
+
+    //         // Menutup submenu 'Produk' jika terbuka
+    //     $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content.produk) .dropdown-content').removeClass('active');
+
+    //         // Membuka submenu 'Gallery'
+    //     $(this).find('.dropdown-content').toggleClass('active');
+    // });
+
+    
+    // $('.navbar-nav .dropdown-list .dropdown-content li ').on('click', function(){
+    //     a = $(this).html();
+    //     console.log(a);
+    //     console.log('li ke 2');
+    // })    
+    $('.navbar-nav .dropdown-list li').on('mouseenter mouseleave',function() {
+        // Temukan elemen submenu dalam elemen <li> saat ini
+        var submenu = $(this).find('.dropdown-content');
+        // Tampilkan submenu
+        submenu.toggleClass('show');
     });
 
-        // Menangani klik pada submenu 'Gallery'
-    $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content.gallery)').on('click', function(event) {
-            // Menghentikan penyebaran event klik
-            event.stopPropagation();                
-
-            // Menutup submenu 'Produk' jika terbuka
-        $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content.produk) .dropdown-content').removeClass('active');
-
-            // Membuka submenu 'Gallery'
-        $(this).find('.dropdown-content').toggleClass('active');
-    });
+    $('.navbar-nav .dropdown-list .dropdown-content li').on('mouseenter mouseleave', function(){
+        var submenu = $(this).find('.dropdown-content-list');
+        submenu.toggleClass('show');
+    })
+    // Ketika mouse keluar dari elemen <li> yang memiliki submenu
+    // $('.navbar-nav .dropdown-list li').mouseleave(function() {
+    //     // Temukan elemen submenu dalam elemen <li> saat ini
+    //     var submenu = $(this).find('.dropdown-content');
+    //     // Sembunyikan submenu
+    //     submenu.removeClass('show');
+    // });
 })
 
 document.addEventListener("alpine:init", () => {

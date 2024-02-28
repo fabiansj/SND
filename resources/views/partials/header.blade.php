@@ -10,20 +10,20 @@
                 <!-- <li><a href="{{ asset('product') }}">Produk <span>&#9660;</span></a> -->
                 <ul class="dropdown-content">
                     <li><a href="#">Dirt Bike<span>&#9658;</span></a>
-                        <ul class="dropdown-content-list">
+                        <ul class="dropdown-content-list" class="dropdown-content-list">
                             <li><a href="#">SND TMX 50</a></li>
                             <li><a href="#">SND TMX 65</a></li>
                             <li><a href="#">SND TMX 105</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Velg Rapido<span>&#9658;</span></a>
-                        <ul>
+                        <ul class="dropdown-content-list">
                             <li><a href="#">Sport Rim</a></li>
                             <li><a href="#">Matic Rim</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Motocross Part<span>&#9658;</span></a>
-                        <ul>
+                        <ul class="dropdown-content-list">
                             <li><a href="#">Honda CRF 150 L</a></li>
                             <li><a href="#">HONDA CRF 230</a></li>
                             <li><a href="#">KAWASAKI KLX 150</a></li>
@@ -34,13 +34,13 @@
                     <li><a href="#">Racing & Daily</a>
                     </li>
                     <li><a href="#">Carburator<span>&#9658;</span></a>
-                        <ul>
+                        <ul class="dropdown-content-list">
                             <li><a href="#">Carburator Originil</a></li>
                             <li><a href="#">Carburator SND</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Blok Kopling & Engine<span>&#9658;</span></a>
-                        <ul>
+                        <ul class="dropdown-content-list">
                             <li><a href="#">Block Kopling</a></li>
                             <li><a href="#">Engine</a></li>
                         </ul>
@@ -52,7 +52,8 @@
             <!-- <li><a href="#">Racing Team</a></li> -->
             <li><a href="#">Gallery <span>&#9660;</span></a>
                 <ul class="dropdown-content">
-                    <li><a href="{{ asset('photo') }}">Foto</a></li>
+                    <!-- <li><a href="{{ asset('photo') }}">Foto</a></li> -->
+                    <li><a href="#">Foto</a></li>
                     <li><a href="{{ asset('video') }}">Video</a></li>
                 </ul>
             </li>
