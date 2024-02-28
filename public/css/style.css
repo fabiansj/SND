@@ -75,10 +75,8 @@ body {
 }
 
 .navbar .navbar-nav a:hover{
-    color: var(--primary);    
-    display: block;    
-    border-bottom: 0.1rem solid var(--primary);
-    transition: 0.2s linear;
+    
+    
 }
 .navbar .navbar-nav .dropdown-content a:hover,
 .navbar .navbar-nav .dropdown-content .dropdown-content-list a:hover{
