@@ -23,14 +23,14 @@ Route::get('/test', function () {
     return view('test');
 });
 
-Route::redirect('/', 'index');
-Route::redirect('home', 'index');
-Route::redirect('snd', 'index');
-Route::redirect('admin', 'index');
-Route::redirect('produk', 'product');
+Route::redirect('index', '/');
+Route::redirect('home', '/');
+Route::redirect('snd', '/');
+Route::redirect('admin', '/');
+Route::redirect('produk', '/');
 
 
-Route::get('index', [ViewsController::class, 'index'])->name('about.show');
+Route::get('/', [ViewsController::class, 'index'])->name('index.show');
 Route::get('about', [ViewsController::class, 'aboutshow'])->name('about.show');
 Route::get('contact', [ViewsController::class, 'contactshow'])->name('contact.show');
 Route::get('product', [ViewsController::class, 'productshow'])->name('product.show');

@@ -1,13 +1,31 @@
 console.log("out");
-$(document).ready(function () {
-    $(".dropdown").on("click", function (e) {
+$(document).ready(function() {        
+    $('#hamburger-menu').on('click', function(e){
         e.preventDefault();
-        // Dapatkan kelas yang sesuai dengan elemen yang diklik
-        var targetClass = $(this).attr("id").replace("Dropdown", "list");
-        // Toggle tampilan elemen dengan kelas yang sesuai
-        $("." + targetClass).toggle();
+    })
+    $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content)').on('click', function(event) {
+            // Menghentikan penyebaran event klik
+            event.stopPropagation();                
+
+            // Menutup submenu 'Gallery' jika terbuka
+        $('.navbar .na vbar-nav .dropdown-list > li:has(.dropdown-content.gallery) .dropdown-content').removeClass('active');
+
+                // Membuka submenu 'Produk'
+        $(this).find('.dropdown-content').toggleClass('active');
     });
-});
+
+        // Menangani klik pada submenu 'Gallery'
+    $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content.gallery)').on('click', function(event) {
+            // Menghentikan penyebaran event klik
+            event.stopPropagation();                
+
+            // Menutup submenu 'Produk' jika terbuka
+        $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content.produk) .dropdown-content').removeClass('active');
+
+            // Membuka submenu 'Gallery'
+        $(this).find('.dropdown-content').toggleClass('active');
+    });
+})
 
 document.addEventListener("alpine:init", () => {
     Alpine.data("products", () => ({
