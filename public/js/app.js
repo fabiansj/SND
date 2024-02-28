@@ -3,12 +3,12 @@ $(document).ready(function() {
     $('#hamburger-menu').on('click', function(e){
         e.preventDefault();
     })
-    $('.navbar .navbar-nav .dropdown-list > li').on('click', function(e){        
+    $('.navbar .navbar-nav .dropdown-list > li').off('mouseenter mouseleave').on('click', function(e){        
         $(this).not($(this)).find('.dropdown-content').removeClass('active')
         $(this).find('.dropdown-content').toggleClass('active');
         console.log('aman')
     })
-    $('.navbar .navbar-nav .dropdown-list .dropdown-content > li').on('click', function(e){
+    $('.navbar .navbar-nav .dropdown-list .dropdown-content > li').off('mouseenter mouseleave').on('click', function(e){
         e.stopPropagation();
         $(this).not($(this)).find('dropdown-content-list').removeClass('active');
         $(this).find('.dropdown-content-list').toggleClass('active');
