@@ -3,47 +3,32 @@ $(document).ready(function() {
     $('#hamburger-menu').on('click', function(e){
         e.preventDefault();
     })
-    $('.navbar .navbar-nav .dropdown-list > li').off('mouseenter mouseleave').on('click', function(e){        
-        $(this).not($(this)).find('.dropdown-content').removeClass('active')
-        $(this).find('.dropdown-content').toggleClass('active');
-        console.log('aman')
+
+    // onclick versi hp us   ing touch 
+    $('.navbar .navbar-nav .dropdown-list > li').on('touchstart', function(e){                
+        // e.stopPropagation();
+        e.preventDefault();
+        // $(this).siblings().not($(this)).find('.dropdown-content').removeClass('active')
+        $(this).find('.dropdown-content').toggleClass('active');        
     })
-    $('.navbar .navbar-nav .dropdown-list .dropdown-content > li').off('mouseenter mouseleave').on('click', function(e){
+
+
+    $('.navbar .navbar-nav .dropdown-list .dropdown-content > li').on('touchstart', function(e){                
         e.stopPropagation();
-        $(this).not($(this)).find('dropdown-content-list').removeClass('active');
-        $(this).find('.dropdown-content-list').toggleClass('active');
+        e.preventDefault();        
+        // $(this).not($(this)).find('dropdown-content-list').removeClass('active');
+        $(this).find('.dropdown-content-list').toggleClass('active');        
     })
-    // $('.navbar .navbar-nav .dropdown-list li').on('click', function(event) {
-    // // $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content)').on('click', function(event) {
-    //         // Menghentikan penyebaran event klik
-    //         event.stopPropagation();                             
-    //         // Menutup submenu 'Gallery' jika terbuka
-    //     $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content.gallery) .dropdown-content').removeClass('active');
 
-    //             // Membuka submenu 'Produk'
-    //     $(this).find('.dropdown-content').toggleClass('active');
-    //     console.log('ya')
-    // });
+    $('.navbar .navbar-nav .dropdown-list .dropdown-content .dropdown-content-list > li').on('touchstart', function(e){                
+        e.stopPropagation();
+    })
 
-    //     // Menangani klik pada submenu 'Gallery'
-    // $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content.gallery)').on('click', function(event) {
-    // // $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content.gallery)').on('click', function(event) {
-    //         // Menghentikan penyebaran event klik
-    //         event.stopPropagation();                
-
-    //         // Menutup submenu 'Produk' jika terbuka
-    //     $('.navbar .navbar-nav .dropdown-list > li:has(.dropdown-content.produk) .dropdown-content').removeClass('active');
-
-    //         // Membuka submenu 'Gallery'
-    //     $(this).find('.dropdown-content').toggleClass('active');
-    // });
-
+    // $('.navbar .navbar-nav .dropdown-list .dropdown-content > li').on('touchstart', function(e){        
+    //     e.preventDefault();
+    // })
     
-    // $('.navbar-nav .dropdown-list .dropdown-content li ').on('click', function(){
-    //     a = $(this).html();
-    //     console.log(a);
-    //     console.log('li ke 2');
-    // })    
+    //
     $('.navbar-nav .dropdown-list li').on('mouseenter mouseleave',function() {
         // Temukan elemen submenu dalam elemen <li> saat ini
         var submenu = $(this).find('.dropdown-content');

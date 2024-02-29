@@ -6,12 +6,13 @@
         <ul class="dropdown-list">
             <li><a href="{{ asset('index') }}">Home</a></li>
             <li><a href="{{ asset('about') }}">About Us</a>
-            <li><a href="#">Produk <span>&#9660;</span></a>
-                <!-- <li><a href="{{ asset('product') }}">Produk <span>&#9660;</span></a> -->
+            <!-- <li><a href="#">Produk <span>&#9660;</span></a> -->
+                <li><a href="{{ asset('product') }}">Produk <span>&#9660;</span></a>
                 <ul class="dropdown-content">
                     <li><a href="#">Dirt Bike<span>&#9658;</span></a>
+                    <!-- <li><a href="{{ asset('product')}}">Dirt Bike<span>&#9658;</span></a> -->
                         <ul class="dropdown-content-list" class="dropdown-content-list">
-                            <li><a href="#">SND TMX 50</a></li>
+                            <li><a href="{{ asset('product')}}">SND TMX 50</a></li>
                             <li><a href="#">SND TMX 65</a></li>
                             <li><a href="#">SND TMX 105</a></li>
                         </ul>

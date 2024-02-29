@@ -74,11 +74,7 @@ body {
     font-size: 1.5rem;    
 }
 
-.navbar .navbar-nav a:hover{
-    
-    
-}
-.navbar .navbar-nav .dropdown-content a:hover,
+.navbar .navbar-nav a:hover,
 .navbar .navbar-nav .dropdown-content .dropdown-content-list a:hover{
     color: var(--primary);        
     border-bottom: 0.1rem solid var(--primary);
