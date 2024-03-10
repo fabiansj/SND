@@ -99,57 +99,57 @@
 </html> -->
 
 <nav class="menu">
-  <ul>
-    <li><a href="#">Beranda</a></li>
-    <li><a href="#">Tentang</a>
-      <ul>
-        <li><a href="#">Visi dan Misi</a></li>
-        <li><a href="#">Tim</a></li>
-      </ul>
-    </li>
-    <li><a href="#">Layanan</a></li>
-    <li><a href="#">Kontak</a></li>
-  </ul>
+    <ul>
+        <li><a href="#">Beranda</a></li>
+        <li><a href="#">Tentang</a>
+            <ul>
+                <li><a href="#">Visi dan Misi</a></li>
+                <li><a href="#">Tim</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Layanan</a></li>
+        <li><a href="#">Kontak</a></li>
+    </ul>
 </nav>
 
 <style>
-.menu ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
+    .menu ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
 
-.menu ul li {
-  position: relative;
-  float: left;
-}
+    .menu ul li {
+        position: relative;
+        float: left;
+    }
 
-.menu ul li a {
-  display: block;
-  padding: 10px 20px;
-  text-decoration: none;
-  color: #333;
-}
+    .menu ul li a {
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #333;
+    }
 
-.menu ul ul {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  display: none;
-  background-color: #fff;
-  border: 1px solid #ccc;
-}
+    .menu ul ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        display: none;
+        background-color: #fff;
+        border: 1px solid #ccc;
+    }
 
-.menu ul ul li {
-  float: none;
-  width: 200px;
-}
+    .menu ul ul li {
+        float: none;
+        width: 200px;
+    }
 
-.menu ul ul a {
-  padding: 8px 20px;
-}
+    .menu ul ul a {
+        padding: 8px 20px;
+    }
 
-.menu ul li:hover > ul {
-  display: block;
-}
+    .menu ul li:hover>ul {
+        display: block;
+    }
 </style>
