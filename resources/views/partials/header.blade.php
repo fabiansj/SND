@@ -125,3 +125,43 @@
     </div>
     <!-- Shopping Cart End -->
 </nav>
+<script>
+    $(document).ready(function() {
+    var lastScrollTop = 0;
+    var navbar = $('.navbar');
+
+    $(document).scroll(function(){
+        var st = $(this).scrollTop();        
+        if (st > lastScrollTop) {                         
+            navbar.css({                
+                'opacity': '0.8',
+                'transition':  'opacity 0.3s ease'                
+            });
+        } else {            
+            if(navbar.is(':hover')){
+                navbar.css({                
+                    'opacity': '0.8',                
+                });
+            }else{
+                navbar.css({                
+                    'opacity': '0',                
+                });
+            }
+        }
+        lastScrollTop = st;
+    });
+
+    navbar.hover(
+        function() {        
+            navbar.css('opacity', '1');
+        },
+        function() {    
+            if(!lastScrollTop == 0){
+                navbar.css('opacity', '0.8');
+            }else{
+                navbar.css('opacity', '0');
+            }
+        }
+    );
+});
+</script>

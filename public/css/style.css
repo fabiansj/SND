@@ -3,6 +3,10 @@
     /* --primary: #b6895b; */
     --bg: #dad9d9;
     --card-info: #fda707;
+
+    /* f7f702 > primary
+    00120b > second
+    35605a > */
 }
 
 * {
@@ -30,13 +34,15 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1.4rem 7%;
-    background-color: rgba(1, 1, 1, 0.6);
+    background-color: rgba(0, 0, 0, 0.9);
     border-bottom: 1px solid #513c28;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3 ease;
 }
 
 .navbar .navbar-logo {
@@ -922,8 +928,7 @@ footer {
     background-size: cover;
     background-position: left;
     text-align: center;
-    padding: 1rem 0 2rem;
-    margin-top: 8rem;
+    padding: 1rem 0 2rem;    
     width: 100%;
     color: white;
 }
@@ -1219,6 +1224,10 @@ footer .container-card .card .card-content .card-text-cs a img {
         display: inline-block;
     }
 
+    .navbar {
+        position: fixed;
+        opacity: 1 !important   ;
+    }
     .navbar-nav .nav-item {
         pointer-events: none; 
     }

@@ -132,7 +132,7 @@
                 maksimal, produk kami presisi, aman serta layak menjadi bagian dari kendaraan juara Anda.
             </p>
         </div>
-        <div class="line"></div>
+        <!-- <div class="line"></div>
         <div class="products-groups-button">
             <a href="#">DIRT BIKE</a>
             <a href="#">VLEG RAPIDO</a>
@@ -143,7 +143,7 @@
             <a href="#">MOTORCROSS PART</a>
             <a href="#">RACING & DAILY</a>
         </div>
-        <div class="line"></div>
+        <div class="line"></div> -->
         <div class="row">
             <template x-for="(item, index) in items" x-key="index">
                 <div class="product-card">

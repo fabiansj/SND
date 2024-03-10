@@ -1,8 +1,5 @@
 console.log("out");
-$(document).ready(function() {        
-    $('#hamburger-menu').on('click', function(e){
-        e.preventDefault();
-    })
+$(document).ready(function() {            
 
     // onclick versi hp us   ing touch 
     $('.navbar .navbar-nav .dropdown-list > li').on('touchstart', function(e){                
@@ -24,11 +21,6 @@ $(document).ready(function() {
         e.stopPropagation();
     })
 
-    // $('.navbar .navbar-nav .dropdown-list .dropdown-content > li').on('touchstart', function(e){        
-    //     e.preventDefault();
-    // })
-    
-    //
     $('.navbar-nav .dropdown-list li').on('mouseenter mouseleave',function() {
         // Temukan elemen submenu dalam elemen <li> saat ini
         var submenu = $(this).find('.dropdown-content');
@@ -39,14 +31,7 @@ $(document).ready(function() {
     $('.navbar-nav .dropdown-list .dropdown-content li').on('mouseenter mouseleave', function(){
         var submenu = $(this).find('.dropdown-content-list');
         submenu.toggleClass('show');
-    })
-    // Ketika mouse keluar dari elemen <li> yang memiliki submenu
-    // $('.navbar-nav .dropdown-list li').mouseleave(function() {
-    //     // Temukan elemen submenu dalam elemen <li> saat ini
-    //     var submenu = $(this).find('.dropdown-content');
-    //     // Sembunyikan submenu
-    //     submenu.removeClass('show');
-    // });
+    })    
 })
 
 document.addEventListener("alpine:init", () => {
