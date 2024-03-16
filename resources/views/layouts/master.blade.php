@@ -35,14 +35,42 @@
     @include('partials.modalbox')
     <!-- Footer End -->
 
-    <a href="https://api.whatsapp.com/send/?phone=6283829050592&text&type=phone_number&app_absent=0" class="whatsapp-button"
-        target="_blank">
-        <img src="{{ asset('img/walogo1.png') }}" alt="WhatsApp">
+    <a href="https://api.whatsapp.com/send/?phone=6283829050592&text&type=phone_number&app_absent=0"
+        class="whatsapp-button" target="_blank">
+        <div class="image-container">
+            <img src="{{ asset('img/walogo1.png') }}" alt="WhatsApp">
+            <p class="overlay-text-logowa">Tanya kami via whatsapp</p>
+        </div>
     </a>
-    
+
     <!-- Scripts -->
     @include('partials.scripts')
     <!-- Scripts End -->
 </body>
+<style>
+    .image-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .overlay-text-logowa {
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #fff;
+        display: none;
+        width: auto;
+        white-space: nowrap;
+    }
+
+    .image-container:hover .overlay-text-logowa {
+        display: block;
+    }
+</style>
 
 </html>

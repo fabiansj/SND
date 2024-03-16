@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-        <!-- Hero Section Start -->
+    <!-- Hero Section Start -->
     <section class="hero" id="home">
         <main class="content">
             <h1>Spare Part <span>Berkualitas</span></h1>
@@ -115,15 +115,19 @@
                 </div>
             </div>
         </div>
-        <div class="arrival-button">
+        {{-- <div class="arrival-button">
             <button><a href="{{ asset('product') }}" style="color:white;">EXPLORE ALL PRODUCT</a></button>
-        </div>
+        </div> --}}
     </section>
     <!-- Arrival Section End -->
-    `
+    <section>
+        <div class="checktoallproduct">
+            <p>MAU CARI PRODUK LAINNYA ? <span><a href="{{ asset('product') }}">KLIK DISINI</a></span></p>
+        </div>
+    </section>
     <!-- Product Section Start -->
     <section class="products" id="products" x-data="products">
-        <div style="text-align: center;">
+        <div style="text-align: center; margin-top:30px;">
             <img src="{{ asset('img/icon_m.png') }}" alt="mini_icon_snd">
         </div>
         <h2><span>PRODUK </span>PILIHAN</h2>
@@ -133,17 +137,17 @@
             </p>
         </div>
         <!-- <div class="line"></div>
-        <div class="products-groups-button">
-            <a href="#">DIRT BIKE</a>
-            <a href="#">VLEG RAPIDO</a>
-            <a href="#">CNC PORTING</a>
-            <a href="#">BLOK KOPLING & ENGINE</a>
-            <a href="#">MUFFLER</a>
-            <a href="#">CARBURETOR</a>
-            <a href="#">MOTORCROSS PART</a>
-            <a href="#">RACING & DAILY</a>
-        </div>
-        <div class="line"></div> -->
+                                                                                    <div class="products-groups-button">
+                                                                                        <a href="#">DIRT BIKE</a>
+                                                                                        <a href="#">VLEG RAPIDO</a>
+                                                                                        <a href="#">CNC PORTING</a>
+                                                                                        <a href="#">BLOK KOPLING & ENGINE</a>
+                                                                                        <a href="#">MUFFLER</a>
+                                                                                        <a href="#">CARBURETOR</a>
+                                                                                        <a href="#">MOTORCROSS PART</a>
+                                                                                        <a href="#">RACING & DAILY</a>
+                                                                                    </div>
+                                                                                    <div class="line"></div> -->
         <div class="row">
             <template x-for="(item, index) in items" x-key="index">
                 <div class="product-card">
@@ -152,42 +156,42 @@
                     </div>
                     <img src="{{ asset('img/products/velgmio.png') }}" alt="vleg_mio">
                     <!-- <div class="product-icons" >
-                                                                                                                                                                                                            <a href="#" @click.prevent="$store.cart.add(item)">
-                                                                                                                                                                                                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-                                                                                                                                                                                                                stroke-linecap="round" stroke-linejoin="round">
-                                                                                                                                                                                                                <use href="{{ asset('img/feather-sprite.svg#shopping-cart') }}" />
-                                                                                                                                                                                                            </svg>
-                                                                                                                                                                                                        </a>
-                                                                                                                                                                                                            ini adalah bagian gambar tambah ke cart dan detail
-                                                                                                                                                                                                            <a href="#" class="item-detail-button">
-                                                                                                                                                                                                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
-                                                                                                                                                                                                                    stroke-linecap="round" stroke-linejoin="round">
-                                                                                                                                                                                                                    <use href="{{ asset('img/feather-sprite.svg#eye') }}" />
-                                                                                                                                                                                                                </svg>
-                                                                                                                                                                                                            </a>
-                                                                                                                                                                                                        </div>                 -->
+                                                                                                                                                                                                                                                                                        <a href="#" @click.prevent="$store.cart.add(item)">
+                                                                                                                                                                                                                                                                                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                                                                                                                                                                                                                                                                            stroke-linecap="round" stroke-linejoin="round">
+                                                                                                                                                                                                                                                                                            <use href="{{ asset('img/feather-sprite.svg#shopping-cart') }}" />
+                                                                                                                                                                                                                                                                                        </svg>
+                                                                                                                                                                                                                                                                                    </a>
+                                                                                                                                                                                                                                                                                        ini adalah bagian gambar tambah ke cart dan detail
+                                                                                                                                                                                                                                                                                        <a href="#" class="item-detail-button">
+                                                                                                                                                                                                                                                                                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                                                                                                                                                                                                                                                                                stroke-linecap="round" stroke-linejoin="round">
+                                                                                                                                                                                                                                                                                                <use href="{{ asset('img/feather-sprite.svg#eye') }}" />
+                                                                                                                                                                                                                                                                                            </svg>
+                                                                                                                                                                                                                                                                                        </a>
+                                                                                                                                                                                                                                                                                    </div>                 -->
                     <!-- <div class="product-stars">
-                                                                                                                                                                                                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                                                                                                                                                                                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                                                                                                                                                                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                                                                                                                                                                                                            </svg>
-                                                                                                                                                                                                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                                                                                                                                                                                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                                                                                                                                                                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                                                                                                                                                                                                            </svg>
-                                                                                                                                                                                                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                                                                                                                                                                                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                                                                                                                                                                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                                                                                                                                                                                                            </svg>
-                                                                                                                                                                                                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                                                                                                                                                                                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                                                                                                                                                                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                                                                                                                                                                                                            </svg>
-                                                                                                                                                                                                            <svg width="24" height="24" fill="currentColor" stroke="currentColor"
-                                                                                                                                                                                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                                                                                                                                                                                <use href="{{ asset('img/feather-sprite.svg#star') }}" />
-                                                                                                                                                                                                            </svg>
-                                                                                                                                                                                                        </div> -->
+                                                                                                                                                                                                                                                                                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                                                                                                                                                                                                                                                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                                                                                                                                                                                                                                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                                                                                                                                                                                                                                                                                        </svg>
+                                                                                                                                                                                                                                                                                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                                                                                                                                                                                                                                                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                                                                                                                                                                                                                                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                                                                                                                                                                                                                                                                                        </svg>
+                                                                                                                                                                                                                                                                                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                                                                                                                                                                                                                                                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                                                                                                                                                                                                                                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                                                                                                                                                                                                                                                                                        </svg>
+                                                                                                                                                                                                                                                                                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                                                                                                                                                                                                                                                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                                                                                                                                                                                                                                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                                                                                                                                                                                                                                                                                        </svg>
+                                                                                                                                                                                                                                                                                        <svg width="24" height="24" fill="currentColor" stroke="currentColor"
+                                                                                                                                                                                                                                                                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                                                                                                                                                                                                                                            <use href="{{ asset('img/feather-sprite.svg#star') }}" />
+                                                                                                                                                                                                                                                                                        </svg>
+                                                                                                                                                                                                                                                                                    </div> -->
                     <div class="product-content">
                         <div class="product-price"><span x-text="rupiah(item.price)"></span></div>
                         <p x-text="item.name"></p>
@@ -198,9 +202,9 @@
                 </div>
             </template>
         </div>
-        <div class="arrival-button">
+        {{-- <div class="arrival-button">
             <button><a href="{{ asset('product') }}" style="color:white;">EXPLORE ALL PRODUCT</a></button>
-        </div>
+        </div> --}}
     </section>
     <!-- Product Section End -->
 @endsection
