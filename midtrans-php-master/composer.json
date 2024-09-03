@@ -7,16 +7,8 @@
     "license":"MIT",
     "authors": [
         {
-            "name": "Andri Setiawan",
-            "email": "andri.setiawan@veritrans.co.id"
-        },
-        {
-            "name": "Alvin Litani",
-            "email": "alvin.litani@veritrans.co.id"
-        },
-        {
-            "name": "Ismail Faruqi",
-            "email": "ismail.faruqi@veritrans.co.id"
+            "name": "Fabian Egi Putra",
+            "email": "egiputrafabian@gmail.com"
         }
     ],
     "require": {

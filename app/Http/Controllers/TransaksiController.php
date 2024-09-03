@@ -31,7 +31,7 @@ class TransaksiController extends Controller
             'produk_id' => 'required|exists:produk,id',
         ]);
 
-        // Simpan data transaksi di Alpine.js store (misalnya, menggunakan session)
+        // Simpan data transaksi di store (misalnya, menggunakan session)
         $transaksi = [
             'nama' => $request->input('nama'),
             'email' => $request->input('email'),
