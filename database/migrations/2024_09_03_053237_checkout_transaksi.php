@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id('ctid');
             $table->foreignId('pid')->constrained('pengguna','pid');                  
             $table->boolean('is_paid');      
-            $table->string('nama_penerima', 255);      
-            $table->text('alamat_penerima');      
-            $table->bigInteger('no_telp_penerima');      
+            $table->string('nama', 255);      
+            $table->text('alamat');      
+            $table->bigInteger('no_telp');      
             $table->timestamps();
         });
     }

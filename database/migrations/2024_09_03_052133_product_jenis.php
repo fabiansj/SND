@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cart_list', function (Blueprint $table) {
-            $table->id('clid');
-            $table->foreignId('cid', 255)->constrained('cart','cid');
-            $table->string('nama', 255);
-            $table->string('warna', 100);
-            $table->bigInteger('jumlah');
-            $table->bigInteger('harga');            
+        Schema::create('product_jenis', function (Blueprint $table) {
+            $table->id('pjid');
+            $table->string('subGroup', 255);            
+            $table->string('type', 255);            
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cart_list');
+        Schema::dropIfExists('product_jenis');
     }
 };

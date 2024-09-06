@@ -3,7 +3,15 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use Database\Seeders\pengguna;
+use Database\Seeders\Product;
+use Database\Seeders\ProductDetail;
+use Database\Seeders\ProductJenis;
+use Database\Seeders\ProductStok;
+use Database\Seeders\ProductWarna;
 use Illuminate\Database\Seeder;
+// use Illuminate\Database\Pengguna;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +26,13 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $this->call([
+            pengguna::class,
+            Productjenis::class,
+            ProductWarna::class,
+            Product::class,
+            ProductStok::class,
+            ProductDetail::class,
+        ]);
     }
 }
