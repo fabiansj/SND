@@ -20,6 +20,8 @@ class product extends Seeder
                 'kode' => 'PR1',
                 'pjid' => '1',
                 'keterangan' => 'mio j',
+                'create_by' => 1,
+                'modify_by' => 1,
             ],
             [
                 'nama' => 'SND RAPIDO-501 MX KING',
@@ -27,6 +29,8 @@ class product extends Seeder
                 'kode' => 'PR2',
                 'pjid' => '2',
                 'keterangan' => 'vario',
+                'create_by' => 1,
+                'modify_by' => 1,
             ],
             [
                 'nama' => 'produk 3',
@@ -34,6 +38,8 @@ class product extends Seeder
                 'kode' => 'PR3',
                 'pjid' => '3',
                 'keterangan' => 'vixion',
+                'create_by' => 1,
+                'modify_by' => 1,
             ],
             [
                 'nama' => 'produk 4',
@@ -41,6 +47,8 @@ class product extends Seeder
                 'kode' => 'PR4',
                 'pjid' => '2',
                 'keterangan' => 'beat karbu',
+                'create_by' => 1,
+                'modify_by' => 1,
             ],
         ]);
     }

@@ -149,7 +149,7 @@
                     <div class="product-price"><span>{{ number_format($item->harga, 0, ',', '.') }}</span></div>
                     <p>{{ $item->nama }}</p>
                     <div class="product-overflow-content">
-                        <a> Detail Product</a>
+                        <a href="{{ route('product.detail', [$item->prid]) }}"> Detail Product</a>
                     </div>
                 </div>
             </div>

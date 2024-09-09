@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string('nama', 255);            
             $table->string('jumlah', 255);            
             $table->string('harga', 255);            
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->bigInteger('create_by');
+            $table->timestamp('modified_at')->useCurrent()->useCurrentOnUpdate();
+            $table->bigInteger('modify_by');
         });
     }
 

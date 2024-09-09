@@ -7,46 +7,46 @@ const accountDropdown = document.querySelector('.account-dropdown');
 const searchBox = document.querySelector('#search-box');
 const itemDetaiLModel = document.querySelector('#item-detail-modal');
 const itemDetailButtons = document.querySelectorAll('.item-detail-button');
-const form = document.querySelector('#checkoutForm');
-const checkoutButton = document.querySelector('.checkout-button');
+// const form = document.querySelector('#checkoutForm');
+// const checkoutButton = document.querySelector('.checkout-button');
 
-checkoutButton.disabled = true;
-form.addEventListener('keyup', function () {
-    for (let i = 0; i < form.elements.length; i++) {
-        if (form.elements[i].value.length !== 0) {
-            checkoutButton.classList.remove('disabled');
-            checkoutButton.classList.add('disabled');
-        } else {
-            return false;
-        }
-    }
-    checkoutButton.disabled = false;
-    checkoutButton.classList.remove('disabled');
-});
+// checkoutButton.disabled = true;
+// form.addEventListener('keyup', function () {
+//     for (let i = 0; i < form.elements.length; i++) {
+//         if (form.elements[i].value.length !== 0) {
+//             checkoutButton.classList.remove('disabled');
+//             checkoutButton.classList.add('disabled');
+//         } else {
+//             return false;
+//         }
+//     }
+//     checkoutButton.disabled = false;
+//     checkoutButton.classList.remove('disabled');
+// });
 
-// kirim data ketika tombol checkout diklik
-checkoutButton.addEventListener('click', async function (e) {
-    e.preventDefault();
-    const formData = new FormData(form);
-    const data = new URLSearchParams(formData);
-    const objData = Object.fromEntries(data);
-    const urlfetch = '../config/Midtrans.php';
-    // const urlfetch = 'http://localhost/snd_shop/config/Midtrans.php'; < cara kedua
+// // kirim data ketika tombol checkout diklik
+// checkoutButton.addEventListener('click', async function (e) {
+//     e.preventDefault();
+//     const formData = new FormData(form);
+//     const data = new URLSearchParams(formData);
+//     const objData = Object.fromEntries(data);
+//     const urlfetch = '../config/Midtrans.php';
+//     // const urlfetch = 'http://localhost/snd_shop/config/Midtrans.php'; < cara kedua
 
-    // console.log(objData);
-    //minta transaksi token menggunakan ajax / fetch
-    try {
-        const response = await fetch(urlfetch, {
-            method: 'POST',
-            body: data,
-        });
-        const token = await response.text();
-        // console.log(token);
-        window.snap.pay(token);
-    } catch (err) {
-        console.log(err.message);
-    }
-});
+//     // console.log(objData);
+//     //minta transaksi token menggunakan ajax / fetch
+//     try {
+//         const response = await fetch(urlfetch, {
+//             method: 'POST',
+//             body: data,
+//         });
+//         const token = await response.text();
+//         // console.log(token);
+//         window.snap.pay(token);
+//     } catch (err) {
+//         console.log(err.message);
+//     }
+// });
 
 // try{
 //     const response = await fetch('/config/Midtrans.php', {
@@ -171,3 +171,55 @@ document.querySelector('.modal .close-icon').onclick = (e) => {
 //     if (charCode > 31 && charCode != 46 && (charCode < 48 || charCode > 57))
 //         return true;
 // }
+
+function paymentNow(snap_token, ctid) {
+    // var snap_token = '0e7172e3-4eb4-4f25-9f43-670ef0a242de';
+    var snap_token = snap_token;
+    $status = 'Pending';
+
+    window.snap.pay(snap_token, {
+        onSuccess: function (result) {
+            $status = 'Settlement';
+            // setStatus($status, ctid);
+            alert('payment success!');
+            console.log(result);
+        },
+        onPending: function (result) {
+            // setStatus($status, ctid);
+            alert(
+                'pembayaran di pending, anda dapat melakukan pembayaran kembali ke akun->belum bayar atau klik disini',
+            );
+            console.log(result);
+        },
+        onError: function (result) {
+            $status = 'masa waktu pembayaran telah habis';
+            // setStatus($status, ctid);
+            alert('Maaf, masa waktu pembayaran telah habis!');
+            console.log(result);
+        },
+        onClose: function () {
+            // setStatus($status, ctid);
+            alert('you closed the popup without finishing the payment');
+        },
+    });
+}
+
+function setStatus(status, ctid) {
+    $.ajax({
+        url: "{{ route('api.buy.checkout') }}",
+        type: 'POST',
+        data: payload,
+        headers: {
+            'X-CSRF-TOKEN': csrfToken,
+        },
+        success: function (response) {
+            console.log(response);
+            console.log('ctid: ', ctid);
+            console.log('Status:', status);
+        },
+        error: function (xhr, status, error) {
+            console.log('Error:', error);
+            alert('Checkout Gagal');
+        },
+    });
+}

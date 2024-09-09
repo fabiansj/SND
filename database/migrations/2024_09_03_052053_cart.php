@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('cart', function (Blueprint $table) {
             $table->id('cid');
-            $table->foreignId('pid', 255)->constrained('pengguna','pid');            
+            $table->foreignId('pid', 50)->constrained('pengguna','pid');
+            $table->foreignId('prid', 50);
         });
     }
 

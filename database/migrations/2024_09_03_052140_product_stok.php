@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('product_stok', function (Blueprint $table) {
             $table->id('psid');
             $table->bigInteger('stok');
-            $table->timestamps();
         });
     }
 

@@ -13,10 +13,15 @@ return new class extends Migration
     {
         Schema::create('product_stok_transaksi', function (Blueprint $table) {
             $table->id('pstid');
-            $table->string('nama', 255);            
-            $table->string('jumlah', 255);                        
+            $table->string('nama_product', 255);            
+            $table->string('jumlah', 50);                        
+            $table->foreignId('ctid');
+            $table->foreignId('prid');
             $table->bigInteger('psid')->constrained('product_stok','psid');;
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->bigInteger('create_by');
+            $table->timestamp('modified_at')->useCurrent()->useCurrentOnUpdate();
+            $table->bigInteger('modify_by');
         });
     }
 

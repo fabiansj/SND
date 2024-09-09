@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id('pjid');
             $table->string('subGroup', 255);            
             $table->string('type', 255);            
-            $table->timestamps();
         });
     }
 

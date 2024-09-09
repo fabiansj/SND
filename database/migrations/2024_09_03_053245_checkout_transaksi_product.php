@@ -18,7 +18,11 @@ return new class extends Migration
             $table->string('warna', 255);                  
             $table->bigInteger('harga');      
             $table->bigInteger('jumlah');      
-            $table->timestamps();
+            $table->bigInteger('total_harga');      
+            $table->timestamp('created_at')->useCurrent();
+            $table->bigInteger('create_by');
+            $table->timestamp('modified_at')->useCurrent()->useCurrentOnUpdate();
+            $table->bigInteger('modify_by');
         });
     }
 

@@ -10,6 +10,7 @@ class HomeController extends Controller
     public function index(){
         $productDesc    = ProductRepository::index();
         $product        = ProductRepository::getAll();
+        
         return view('index', compact(
             'product',
             'productDesc'

@@ -6,9 +6,12 @@
             <p>dsadsdadasdsad</p>
         </div>
     </div>    
-    ini login
-    <!-- Product Section Start -->
-    {{-- <section class="admin maste" id="products">
-    </section> --}}
-    <!-- Product Section End -->
+    <form action="{{ route('api.auth.login')}}" method="POST">
+        @csrf
+        <input type="text" id="username" name="username" required>
+        {{-- <input type="text" id="email" name="email" required> --}}
+        <input type="password" id="password" name="password" required>
+        <button id="login-account-button" type="submit">Masuk</button>
+        <p class="text-center">Belum punya akun? <a href=" {{ route('auth.register') }}">Register</a> sekarang!</p>
+    </form>
 @endsection

@@ -18,7 +18,10 @@ return new class extends Migration
             $table->string('kode', 100);
             $table->foreignId('pjid')->constrained('product_jenis','pjid');
             $table->text('keterangan');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->bigInteger('create_by');
+            $table->timestamp('modified_at')->useCurrent()->useCurrentOnUpdate();
+            $table->bigInteger('modify_by');
         });
     }
 

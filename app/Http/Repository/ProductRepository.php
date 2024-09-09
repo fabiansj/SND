@@ -2,10 +2,7 @@
 
 namespace App\Http\Repository;
 
-use App\Models\Produk;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class ProductRepository
 {
@@ -53,7 +50,7 @@ class ProductRepository
         ->select('e.type', 'e.subGroup', 'd.stok', 'c.warna', 'b.url_image', 'a.*')
         ->where('a.prid', $id);
         
-        return $sql->get();
+        return $sql->first();
     }
 
     public static function getName($name)
@@ -88,36 +85,49 @@ class ProductRepository
     }    
 
     //API WEB CONTENT
-    public static function insert($id)
-    {
-        $data = self::findID($id)[0];
+    // public static function insert($data)
+    // {
+    //     try {
+    //         $jumlah = 0;
+    //         $jumlah = intval($data->jumlah++);
+    //         $pid    = Auth::user()->pid;
 
-        $payload = [
-            'pid'           => 1,
-            'cid'           => 1,
-            // 'pid'     => Auth::user()->pid,
-        ];
-
-        $payload1 = [
-            'cid'           => 1,
-            // 'cid'     => Auth::user()->pid,
-            'nama'          => $data->nama,
-            'warna'         => $data->warna,
-            'jumlah'        => 1,
-            'harga'         => $data->harga,
-            'created_at'    => Carbon::now(),
-            // 'create_id'     => Auth::user()->pid,
-        ];
-
-        $cartData       = DB::table('cart')->insert($payload);
-        $cartListData   = DB::table('cart_list')->insert($payload1);
-        
-        return [
-            'cart_data' => $cartData,
-            'cart_list_data' => $cartListData
-        ];
-    }
-
+    //         $getCardID = CartRepository::insert($pid);
+    
+    //         $payload = [
+    //             'cid'           => $getCardID,
+    //             'nama'          => $data->nama,
+    //             'warna'         => $data->warna,
+    //             'jumlah'        => $jumlah,
+    //             'harga'         => $data->harga,
+    //             'created_at'    => Carbon::now(),
+    //             'create_id'     => $pid,
+    //             'modified_at'   => Carbon::now(),
+    //             'modify_id'     => $pid,
+    //         ];
+    
+    //         $cartData = CartListRepository::insert($payload);
+            
+    //         return response()->json([
+    //             'status' => 'success',
+    //             'message' => 'Data berhasil ditambahkan ke keranjang.',
+    //             'cid' => $getCardID,
+    //             'data' => $cartData
+    //         ], 200);
+    
+    //     } catch (Exception $e) {
+    //         Log::error('Error adding to cart: ' . $e->getMessage(), [
+    //             'user_id' => Auth::user()->pid,
+    //             'request' => $data->all(),
+    //         ]);
+    
+    //         return response()->json([
+    //             'status' => 'error',
+    //             'message' => 'Terjadi kesalahan saat menambahkan data ke keranjang.',
+    //             'error' => $e->getMessage(),
+    //         ], 500);
+    //     }
+    // }
 
     // private function
     private static function getDataFind($name,$rawName)

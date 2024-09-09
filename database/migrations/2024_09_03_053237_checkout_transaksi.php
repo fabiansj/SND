@@ -14,11 +14,18 @@ return new class extends Migration
         Schema::create('checkout_transaksi', function (Blueprint $table) {
             $table->id('ctid');
             $table->foreignId('pid')->constrained('pengguna','pid');                  
-            $table->boolean('is_paid');      
+            $table->boolean('is_paid')->default(false);
             $table->string('nama', 255);      
             $table->text('alamat');      
-            $table->bigInteger('no_telp');      
-            $table->timestamps();
+            $table->string('no_telp', 15);      
+            $table->bigInteger('final_price');      
+            $table->timestamp('created_at')->useCurrent();
+            $table->bigInteger('create_by');
+            $table->timestamp('modified_at')->useCurrent()->useCurrentOnUpdate();
+            $table->bigInteger('modify_by');
+            $table->string('status')->default('pending');
+            $table->string('snap_token')->nullable();
+            $table->string('order_id')->nullable();
         });
     }
 

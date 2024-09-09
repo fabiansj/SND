@@ -14,12 +14,15 @@ return new class extends Migration
         Schema::create('pengguna', function (Blueprint $table) {
             $table->id('pid');
             $table->string('username', 255);
-            $table->string('password', 15);
+            $table->string('password', 255);
             $table->string('nama', 100);
             $table->text('alamat');
-            $table->bigInteger('no_telp');
+            $table->string('no_telp',15);
             $table->string('role', 50);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->bigInteger('create_by');
+            $table->timestamp('modified_at')->useCurrent()->useCurrentOnUpdate();
+            $table->bigInteger('modify_by');
         });
     }
 

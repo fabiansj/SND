@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('pwid')->constrained('product_warna','pwid');
             $table->foreignId('psid')->constrained('product_stok','psid');
             $table->string('url_image', 255)->nullable();
-            $table->timestamps();
         });
     }
 

@@ -67,21 +67,36 @@
             <i data-feather="shopping-cart"></i>
             <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
         </a>
-        <a href="#" id="login-button"><i data-feather="user"></i></a>
-        {{-- <a href="{{ route('auth.login') }}" id="login-button"><i data-feather="user"></i></a> --}}
+        @auth
+        <a href="" id="login-button"><i data-feather="user"></i></a>
+        @else
+        <a href="{{ route('auth.login') }}"><i data-feather="user"></i></a>
+        @endauth
+        
 
-        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+        <a href="javascript:void(0);" id="hamburger-menu"><i data-feather="menu"></i></a>
     </div>
 
+    @auth
     <div class="account-dropdown">
         <ul>
+            <li><span style="cursor: default">Halo, {{ Auth::user()->nama }}</span></li>
             {{-- <li><a href="{{ route('user.profile') }}">Profile</a></li> --}}
-            {{-- <li><a href="{{ route('auth.logout') }}">Logout</a></li> --}}
             <li><a href="#">Profil</a></li>
+            <hr style="border: none; height: 1px; background-color: #333; width: 85%; margin: 2px auto;">
+            @if(Auth::check() && Auth::user()->role === 'admin')
+            <li><a href="{{ route('dashboard.index')}}">Dashboard Admin</a></li>
+            @endif    
+            <li><a href="#">Belum Bayar</a></li>
+            <li><a href="#" onclick="event.preventDefault(); paymentNow();">Test Bayar</a></li>
             <li><a href="#">Riwayat</a></li>
-            <li><a href="#">Keluar</a></li>
+            <li>
+                <a href="{{ route('api.auth.logout') }}">Keluar</a>
+            </li>
         </ul>
-    </div>
+    </div>   
+    @endauth
+    
     <!-- search form start -->
     <div class="search-form">
             <input type="search" id="search-box" placeholder="Cari produk disini...">
@@ -89,56 +104,48 @@
     </div>
     <!-- search form end -->
 
+
     <!-- Shopping Cart Start -->
     <div class="shopping-cart">
-        <template x-for="(item,index) in $store.cart.items" x-keys="index">
-            <div class="cart-item">
-                <img :src="`{{ asset('img/products/${item.img}') }}`" :alt="item.name">
-                <div class="item-detail">
-                    <h3 x-text="item.name"></h3>
-                    <div class="item-price">
-                        <span x-text="rupiah(item.price)"></span>&times;
-                        <button id="remove" @click="$store.cart.remove(item.id)">&minus;</button>
-                        <span x-text="item.quantity"></span>
-                        <button id="add" @click="$store.cart.add(item)">&plus;</button> &equals;
-                        <span x-text="rupiah(item.total)"></span>
-                    </div>
-                </div>
-                <i data-feather="trash-2" class="remove-item"></i>
-            </div>
-        </template>
-        <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem;">Keranjang belanja kosong</h4>
-        <h4 x-show="$store.cart.items.length">Total: <span x-text="rupiah($store.cart.total)"></span></h4>
-        <div class="form-container" x-show="$store.cart.items.length">
-            <form id="checkoutForm" action="">
-                <input type="hidden" name="items" x-model="JSON.stringify($store.cart.items)">
-                <input type="hidden" name="total" x-model="$store.cart.total">
-                <h5>costumer detail</h5>
+        <!-- Placeholder untuk item keranjang -->
+        <h4></h4>
+        <div class="shopping-cart-produk">
+
+        </div>
+        <div class="form-container" style="display: none;">
+            <form id="checkoutForm" action="#" method="post">
+                @csrf
+                <div id="cartDataShop" data-items="[]" data-total="0" data-ctid="0"></div>
+                <input type="hidden" name="items" id="itemsInput">
+                <input type="hidden" name="total" id="totalInput">
+                <h5>Customer Detail</h5>
                 <label for="name">
-                    <span>name</span>
-                    <input type="text" name="name" id="name">
+                    <span>Name</span>
+                    <input type="text" name="name" id="name" required>
                 </label>
                 <label for="email">
-                    <span>email</span>
+                    <span>Email</span>
                     <input type="email" name="email" id="email">
                 </label>
                 <label for="phone">
-                    <span>phone</span>
-                    <input type="number" name="phone" id="phone" autocomplete="off">
+                    <span>Phone</span>
+                    <input type="text" name="phone" id="phone" autocomplete="off" required>
                 </label>
                 <label for="address">
-                    <span>address</span>
-                    <input type="text" name="address" id="address" autocomplete="off">
+                    <span>Address</span>
+                    <input type="text" name="address" id="address" autocomplete="off" required>
                 </label>
-                <button class="checkout-button disabled" type="submit" id="checkout-button"
-                    value="checkout">Checkout</button>
+                <button class="checkout-button" type="submit" id="checkout-button" value="checkout">Checkout</button>
             </form>
         </div>
     </div>
     <!-- Shopping Cart End -->
 </nav>
+<div id="loading-indicator" style="display: none;">
+    <img src="asset('img/products/giphy.webp" alt="Loading...">
+</div>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function() {    
     var lastScrollTop = 0;
     var navbar = $('.navbar');
 
@@ -161,7 +168,7 @@
             }
         }
         lastScrollTop = st;
-    });
+    });    
 
     navbar.hover(
         function() {        
@@ -205,5 +212,195 @@
         
         window.location.href = url.toString();
     }
+
+    
+
+    loadCart();
+
+    function loadCart() 
+    {
+        $.ajax({
+        url: "{{ route('api.auth.checkLogin') }}",
+        type: 'GET',
+        success: function(response) {
+            if (response.loggedIn) {
+                // Pengguna sudah login, muat data keranjang
+                $.ajax({
+                    url: "{{ route('cart.list') }}",
+                    type: 'GET',
+                    success: function(response) {
+                        console.log(response)       
+                        let items = JSON.stringify(response.items)   
+                        let total = response.total_harga                                
+
+                        $('#cartDataShop').attr('data-items', items);
+                        $('#cartDataShop').attr('data-total', total);
+                        $('#cartDataShop').attr('data-ctid', response.ctid);
+                        const shoppingCart = $('.shopping-cart-produk');
+                        shoppingCart.html('');                                             
+
+                        if (response.items.length > 0) {
+                            // jika data ada
+                            response.items.forEach(item => {                                
+                                shoppingCart.append(`
+                                    <div class="cart-item">
+                                        <div class="img-detail-cart">
+                                            <img src="{{ asset('img/products/${item.url_image}') }}">
+                                        </div>
+                                        <div class="item-detail">
+                                            <h3>${item.nama_produk}</h3>
+                                            <div class="item-price">
+                                                <span> ${rupiah(item.harga_produk)}</span>
+                                                <button id="remove" class="minus-cart" data-clid="${item.clid}">&minus;</button>
+                                                <span>jumlah: ${item.jumlah_produk}</span>
+                                                <button id="add" class="add-cart" data-clid="${item.clid}">&plus;</button>
+                                                <span>Total: ${rupiah(item.tharga_produk)}</span>
+                                            </div>
+                                        </div>
+                                        <button id="remove" class="remove-cart" data-clid="${item.clid}">&plus;</button>
+                                    </div>
+                                `);
+                            });
+                            
+                            shoppingCart.append(`<h4>Total: <span>${rupiah(response.total_harga)}</span></h4>`);
+                            $('.form-container').css('display','block');                                                                                    
+                        } else {
+                            // Jika keranjang kosong
+                            $('.shopping-cart > h4').append('Keranjang belanja kosong');
+                            $('.shopping-cart > h4').css('margin-top','30px');
+                            $('.form-container').css('display', 'none');
+                        }
+
+                        $(document).on('click', '.minus-cart', function() {
+                            var clid = $(this).data('clid');
+                            console.log(clid);
+                            // removeItemFromCart(clid);
+                        });
+
+                        // Event delegation untuk tombol add
+                        $(document).on('click', '.add-cart', function() {
+                            var clid = $(this).data('clid');
+                            console.log(clid);
+                            // addItemToCart(clid);
+                        });
+
+                        // Event delegation untuk tombol remove
+                        $(document).on('click', '.remove-cart', function() {
+                            var clid = $(this).data('clid');
+                            console.log(clid);
+                            // removeItemFromCart(clid);
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                        alert('Terjadi kesalahan saat memuat keranjang.');
+                    }
+                });
+            } else {                
+                $('.shopping-cart > h4').append('Memerlukan login untuk melihat keranjang belanja');
+                $('.shopping-cart > h4').css('margin-top','30px');
+                $('.form-container').css('display', 'none');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error:', error);
+            alert('Terjadi kesalahan saat memeriksa status login.');
+        }}
+    )};
+    
+    const rupiah = (number) => {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+        }).format(number);
+    };
+
+    function updateCartList(){
+        $.ajax({
+            url: "{{ route('cart.list') }}",
+            type: 'GET',
+            success: function(response) {
+                console.log(response.items)                        
+                const shoppingCart = $('.shopping-cart-produk');
+                shoppingCart.html(''); 
+
+                if (response.items.length > 0) {
+                    // jika data ada
+                    response.items.forEach(item => {                                
+                        shoppingCart.append(`
+                            <div class="cart-item">
+                                <div class="img-detail-cart">
+                                    <img src="{{ asset('img/products/${item.url_image}') }}">
+                                </div>
+                                <div class="item-detail">
+                                    <h3>${item.nama_produk}</h3>
+                                    <div class="item-price">
+                                        <span> ${rupiah(item.harga_produk)}</span>
+                                        <button id="remove-cart">&minus;</button>
+                                        <span>jumlah: ${item.jumlah_produk}</span>
+                                        <button id="add-cart">&plus;</button>
+                                        <span>Total: ${rupiah(item.tharga_produk)}</span>
+                                    </div>
+                                </div>
+                                <i data-feather="trash-2" class="remove-item"></i>
+                            </div>
+                        `);
+                    });
+                    
+                    shoppingCart.append(`<h4>Total: <span>${rupiah(response.total_harga)}</span></h4>`);
+                    $('.form-container').css('display','block');
+                } else {
+                    // Jika keranjang kosong
+                    $('.shopping-cart > h4').append('Keranjang belanja kosong');
+                    $('.shopping-cart > h4').css('margin-top','30px');
+                    $('.form-container').css('display', 'none');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log('Error:', error);
+                alert('Terjadi kesalahan saat memperbarui keranjang.');
+            }
+        });
+    }    
+
+    $('#checkoutForm').submit(function(e) {       
+        e.preventDefault()
+            
+        let items = $('#cartDataShop').attr('data-items')
+        let total = $('#cartDataShop').attr('data-total')
+        let ctid = $('#cartDataShop').attr('data-ctid')
+        let url   = '{{ route('api.buy.checkout') }}'
+        let formData = $('#checkoutForm').serialize()
+
+        console.log('Items:', items);
+        console.log('Total:', total);      
+        
+        payload = {
+            items: items,
+            total: total,
+            form: formData
+        }
+                    
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: payload,
+            headers: {
+            'X-CSRF-TOKEN': csrfToken
+            },
+            success: function(response) {        
+                console.log('Success:', response);
+                console.log('token: ', response.snap_token)
+
+                // Anggap snap_token adalah token yang Anda terima dari respons API
+                paymentNow(response.snap_token, ctid)
+            },
+            error: function(xhr, status, error) {            
+                console.log('Error:', error);
+                alert('Checkout Gagal');
+            }
+        });          
+    });
 });
 </script>

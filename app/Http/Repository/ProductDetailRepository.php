@@ -2,12 +2,12 @@
 
 namespace App\Http\Repository;
 
-use App\Models\Produk;
+use App\Models\Pengguna;
 
 class ProductDetailRepository
 {
     public function index() 
     {
-        return Produk::all();
+        return Pengguna::all();
     }
 }

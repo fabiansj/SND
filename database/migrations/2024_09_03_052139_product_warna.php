@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('product_warna', function (Blueprint $table) {
             $table->id('pwid');
             $table->string('warna', 255);      
-            $table->timestamps();
         });
     }
 
