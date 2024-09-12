@@ -19,6 +19,7 @@ return new class extends Migration
             $table->bigInteger('harga');      
             $table->bigInteger('jumlah');      
             $table->bigInteger('total_harga');      
+            $table->string('url_image', 255);      
             $table->timestamp('created_at')->useCurrent();
             $table->bigInteger('create_by');
             $table->timestamp('modified_at')->useCurrent()->useCurrentOnUpdate();

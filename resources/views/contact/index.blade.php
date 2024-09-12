@@ -18,10 +18,10 @@
                     <i data-feather="user"></i>
                     <input type="text" id="nama" placeholder="Nama">
                 </div>
-                <div class="input-group">
+                {{--<div class="input-group">
                     <i data-feather="phone"></i>
                     <input type="text" id="no_hp" placeholder="No Hp">
-                </div>
+                </div>--}}
                 <div class="input-group">
                     <i data-feather="mail"></i>
                     <input type="text" id="pesan" placeholder="Pesan Anda">
@@ -37,11 +37,11 @@
         event.preventDefault(); 
         
         var nama = $('#nama').val();
-        var no_hp = $('#no_hp').val();
+        
         var pesan = $('#pesan').val();
 
-        if (nama && no_hp && pesan) {            
-            var message = `Hallo perkenalkan saya ${nama}, saya ingin bertanya: ${pesan}. Berikut no telp yang dapat dihubungi: ${no_hp}`;            
+        if (nama && pesan) {            
+            var message = `Hallo perkenalkan saya ${nama}, saya ingin bertanya: ${pesan}.`;            
             var urlWhatsApp = `https://wa.me/6283829050592?text=${encodeURIComponent(message)}`;
             
             window.open(urlWhatsApp, '_blank');

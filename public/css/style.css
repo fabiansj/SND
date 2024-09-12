@@ -271,8 +271,11 @@ body {
     position: absolute;
     top: 100%;
     right: -100%;
-    height: 100vh;
-    width: 34rem;
+    height: calc(
+        100vh - 70px
+    ); /* Adjust this value based on your navbar height */
+    max-height: 86vh;
+    width: 50rem;
     padding: 0 1.5rem;
     background-color: #fff;
     color: var(--bg);
@@ -280,6 +283,26 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Add this line */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #888 #f1f1f1; /* For Firefox */
+}
+
+.shopping-cart::-webkit-scrollbar {
+    width: 6px;
+}
+
+.shopping-cart::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.shopping-cart::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.shopping-cart::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 .account-dropdown {
@@ -332,6 +355,7 @@ body {
     border-top: 1px dashed black;
     margin-top: 1rem;
     padding: 1rem;
+    color: black;
 }
 
 .form-container h5 {
@@ -352,14 +376,15 @@ body {
 }
 
 .form-container span {
-    text-align: right;
+    text-align: left;
+    width: 10%;
 }
 
 .form-container input {
     background-color: #ddd;
     padding: 5px;
     font-size: 1rem;
-    width: 70%;
+    width: 80%;
 }
 
 .form-container .checkout-button {
@@ -377,6 +402,7 @@ body {
     background-color: #999;
     cursor: not-allowed;
 }
+
 /* .shopping-cart .remove-item {
     position: absolute;
     right: 1rem;
@@ -461,7 +487,7 @@ color: var(--primary);
 .contact,
 .products,
 .ourteam {
-    padding: 5rem 6% 4rem;
+    padding: 0rem 6% 4rem;
 }
 
 .about h2,
@@ -574,7 +600,7 @@ color: var(--primary);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
     bottom: 120px;
-    color: white;
+    color: black;
     font-size: 2.8em;
     left: 40px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -585,7 +611,7 @@ color: var(--primary);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
     bottom: 120px;
-    color: white;
+    color: black;
     font-size: 1.5em;
     left: 40px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -757,16 +783,17 @@ color: var(--primary);
 }
 
 .container-breadcrumb {
-    position: absolute;
-    top: 57%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     background: white;
-    z-index: 1000;
     padding: 10px 20px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    max-width: 500px;
     border-radius: 5px;
+    margin: 0 auto;
+    display: block;
+    transform: translateY(-20px);
 }
 
 .products-text-title {
@@ -889,7 +916,7 @@ color: var(--primary);
 .products .product-price {
     text-align: center;
     position: relative;
-    bottom: -50px;
+    bottom: -62px;
 }
 
 .products .product-price span {
@@ -905,13 +932,15 @@ color: var(--primary);
     text-align: center;
     color: rgb(117, 117, 117);
     position: relative;
-    bottom: -50px;
+    bottom: -63px;
+    height: 30px;
+    margin: 0px 5px;
 }
 
 .products .product-content .product-overflow-content {
     background-color: white;
     width: 100%;
-    height: 70px;
+    height: 75px;
     position: relative;
     bottom: -100px;
     display: flex;
@@ -939,11 +968,119 @@ color: var(--primary);
     font-size: 1.1vw;
 }
 
-.products .product-content .product-overflow-content a:hover {
-    background-color: var(--card-info);
+/* riwayat product */
+.product-card-riwayat {
+    text-align: center;
+    background-color: #f6f6f6;
+    width: 100%;
+    height: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.products .product-content .product-overflow-content a i {
+
+.product-card-riwayat:hover {
+    transform: scale(1.03);
+}
+
+.product-card-riwayat img {
+    width: 100%;
+    height: 175px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    padding: 0;
+}
+
+.product-card-riwayat:hover img {
+    transform: scale(1.05);
+}
+
+.product-card-riwayat .products-chevron-riwayat {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background-color: #f3b136;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.product-card-riwayat .products-chevron-riwayat p {
     color: white;
+    transform: translate(-50%, -50%) rotate(315deg);
+    top: 30%;
+    left: 33%;
+    font-size: 1.2em;
+    position: absolute;
+}
+
+.product-card-riwayat .product-content-riwayat {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.product-card-riwayat .product-price-riwayat {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.product-card-riwayat .product-price-riwayat span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.product-card-riwayat .product-nama-riwayat {
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 10px 0;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: rgb(117, 117, 117);
+}
+
+.product-card-riwayat .product-overflow-content-riwayat {
+    background-color: white;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.product-card-riwayat:hover .product-overflow-content-riwayat {
+    bottom: 0;
+}
+
+.product-card-riwayat .product-overflow-content-riwayat a {
+    background-color: #f3b136;
+    height: 100%;
+    width: 100%;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid silver;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1vw;
+    transition: background-color 0.3s ease;
+}
+
+.product-card-riwayat .product-overflow-content-riwayat a:hover {
+    background-color: #e09c00;
 }
 
 /*
@@ -1333,7 +1470,50 @@ footer .container-card .card .card-content .card-text-cs a img {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Pastikan elemen ini di atas semua elemen lain */
+    z-index: 9999;
+}
+
+button:disabled {
+    background-color: #b0b0b0;
+    cursor: not-allowed;
+}
+
+button:disabled:hover {
+    background-color: #b0b0b0;
+}
+
+.back-to-payment {
+    display: inline-flex;
+    padding: 12px 24px;
+    background-color: #f3b136;
+    color: #fff;
+    /* text-decoration: none; */
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.back-to-payment:hover {
+    background-color: #f3b136;
+    transform: translateY(-2px);
+    color: white;
+}
+
+.back-to-payment:active {
+    background-color: #f3b136;
+    transform: translateY(0);
+    color: white;
+}
+
+.back-to-payment:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    color: white;
 }
 
 /* Modal Animation */
@@ -1426,15 +1606,73 @@ footer .container-card .card .card-content .card-text-cs a img {
         font-size: 75%;
     }
 
+    .shopping-cart {
+        width: 30rem;
+        max-width: 350px;
+    }
+
+    .product-card-riwayat img {
+        height: 160px; /* Contoh penyesuaian ukuran gambar */
+    }
+
+    .product-card-riwayat .product-price-riwayat span {
+        font-size: 1.4rem; /* Contoh penyesuaian ukuran font */
+    }
+
+    .product-card-riwayat .product-overflow-content-riwayat a {
+        font-size: 1.1em; /* Contoh penyesuaian ukuran link */
+    }
+
     /* .products .row {
         grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
-    } */
+        } */
 }
+
 /* Tablet */
 @media (max-width: 768px) {
     html {
         font-size: 62.5%;
         background-color: wheat;
+    }
+
+    .shopping-cart {
+        width: 100%;
+        margin-top: 22px;
+        height: calc(100vh - 62px); /* Adjusting for smaller font size */
+        max-height: none;
+        top: 62px; /* Adjust based on your navbar height at this breakpoint */
+        right: -100%;
+        border-radius: 0;
+    }
+
+    .shopping-cart.active {
+        right: 0;
+    }
+
+    .product-card-riwayat img {
+        height: 140px;
+    }
+
+    .product-card-riwayat .product-price-riwayat span {
+        font-size: 1.2rem;
+    }
+
+    .product-card-riwayat .products-chevron-riwayat {
+        width: 60px;
+        height: 60px;
+    }
+
+    .product-card-riwayat .products-chevron-riwayat p {
+        font-size: 1em;
+    }
+
+    .product-card-riwayat .product-overflow-content-riwayat a {
+        font-size: 1em;
+    }
+
+    .product-card-riwayat .product-content-riwayat {
+        height: auto;
+        justify-content: space-between;
     }
 
     /* .products .row {
@@ -1595,6 +1833,36 @@ footer .container-card .card .card-content .card-text-cs a img {
 
 /* Mobile */
 @media (max-width: 450px) {
+    .shopping-cart {
+        height: calc(100vh - 55px); /* Adjusting for even smaller font size */
+        top: 55px; /* Adjust based on your navbar height at this breakpoint */
+    }
+
+    .product-card-riwayat img {
+        height: 100px;
+    }
+
+    .product-card-riwayat .product-price-riwayat span {
+        font-size: 1rem;
+    }
+
+    .product-card-riwayat .products-chevron-riwayat {
+        width: 50px;
+        height: 50px;
+    }
+
+    .product-card-riwayat .products-chevron-riwayat p {
+        font-size: 0.9em;
+    }
+
+    .product-card-riwayat .product-overflow-content-riwayat a {
+        font-size: 0.9em;
+    }
+
+    .product-card-riwayat {
+        width: 100%;
+    }
+
     html {
         font-size: 55%;
         background-color: white;
@@ -1625,3 +1893,7 @@ footer .container-card .card .card-content .card-text-cs a img {
         height: 220px;
     } */
 }
+
+/* @media (max-width: 1366px) 
+@media (max-width: 768px)  
+@media (max-width: 450px) */

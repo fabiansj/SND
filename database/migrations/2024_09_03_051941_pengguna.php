@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('no_telp',15);
             $table->string('role', 50);
             $table->timestamp('created_at')->useCurrent();
-            $table->bigInteger('create_by');
+            $table->bigInteger('create_by')->nullable();
             $table->timestamp('modified_at')->useCurrent()->useCurrentOnUpdate();
-            $table->bigInteger('modify_by');
+            $table->bigInteger('modify_by')->nullable();
         });
     }
 

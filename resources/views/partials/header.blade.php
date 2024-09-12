@@ -12,9 +12,9 @@
                     <li><a href="{{ route('product.findGroup', ['dirt'])}}">Dirt Bike<span>&#9658;</span></a>
                     <!-- <li><a href="{{ asset('product')}}">Dirt Bike<span>&#9658;</span></a> -->
                         <ul class="dropdown-content-list" class="dropdown-content-list">
-                            <li><a href="{{ route('product.findType', ['velg','tmx 50'])}}">SND TMX 50</a></li>
-                            <li><a href="#">SND TMX 65</a></li>
-                            <li><a href="#">SND TMX 105</a></li>
+                            <li><a href="{{ route('product.findType', ['Dirt Bike','tmx 50'])}}">SND TMX 50</a></li>
+                            <li><a href="{{ route('product.findType', ['Dirt Bike','tmx 65'])}}">SND TMX 65</a></li>
+                            <li><a href="{{ route('product.findType', ['Dirt Bike','tmx 105'])}}">SND TMX 105</a></li>
                         </ul>
                     </li>
                     <li><a href="{{ route('product.findGroup', ['velg'])}}">Velg Rapido<span>&#9658;</span></a>
@@ -23,11 +23,11 @@
                             <li><a href="{{ route('product.findType', ['velg','matic'])}}">Matic Rim</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ route('product.findGroup', ['motocross'])}}">Motocross Part<span>&#9658;</span></a>
+                    <li><a href="{{ route('product.findGroup', ['Motocross'])}}">Motocross Part<span>&#9658;</span></a>
                         <ul class="dropdown-content-list">
-                            <li><a href="#">Honda CRF 150 L</a></li>
-                            <li><a href="#">HONDA CRF 230</a></li>
-                            <li><a href="#">KAWASAKI KLX 150</a></li>
+                            <li><a href="{{ route('product.findType', ['motocross','crf 150'])}}">Honda CRF 150 L</a></li>
+                            <li><a href="{{ route('product.findType', ['motocross','crf 230'])}}">HONDA CRF 230</a></li>
+                            <li><a href="{{ route('product.findType', ['motocross','klx 150'])}}">KAWASAKI KLX 150</a></li>
                         </ul>
                     </li>
                     <li><a href="{{ route('product.findGroup', ['muffler'])}}">Muffler</a>
@@ -36,36 +36,38 @@
                     </li>
                     <li><a href="{{ route('product.findGroup', ['carburator'])}}">Carburator<span>&#9658;</span></a>
                         <ul class="dropdown-content-list">
-                            <li><a href="#">Carburator Originil</a></li>
-                            <li><a href="#">Carburator SND</a></li>
+                            <li><a href="{{ route('product.findType', ['carburator','original'])}}">Carburator Originil</a></li>
+                            <li><a href="{{ route('product.findType', ['carburator','snd'])}}">Carburator SND</a></li>
                         </ul>
                     </li>
                     <li><a href="{{ route('product.findGroup', ['blok'])}}">Blok Kopling & Engine<span>&#9658;</span></a>
                         <ul class="dropdown-content-list">
-                            <li><a href="#">Block Kopling</a></li>
-                            <li><a href="#">Engine</a></li>
+                            <li><a href="{{ route('product.findType', ['blok','Kopling'])}}">Blok Kopling</a></li>
+                            <li><a href="{{ route('product.findType', ['blok','engine'])}}">Engine</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ route('product.findGroup', ['cnc'])}}">CNC Porting</a>
-                    </li>
+                    {{--<li><a href="{{ route('product.findGroup', ['cnc'])}}">CNC Porting</a>
+                    </li>--}}
                 </ul>
             </li>
             <!-- <li><a href="#">Racing Team</a></li> -->
-            <li><a href="">Galeri <span>&#9660;</span></a>
+            <li><a href="{{ asset('video') }}">Video <span></span></a>
+                {{-- 
                 <ul class="dropdown-content">
-                    <!-- <li><a href="{{ asset('photo') }}">Foto</a></li> -->
+                    <li><a href="{{ asset('photo') }}">Foto</a></li> 
                     <li><a href="{{ asset('photo') }}">Foto</a></li>
-                    <li><a href="{{ asset('video') }}">Video</a></li>
+                    <li><a href="{{ asset('video') }}">Video</a></li> 
                 </ul>
+                --}}
             </li>
             <li><a href="{{ asset('contact') }}">Kontak</a></li>
         </ul>
-    </div>
+    </div>C
     <div class="navbar-extra">
         <a href="#" id="search-button"><i data-feather="search"></i></a>
         <a href="#" id="shopping-cart-button">
             <i data-feather="shopping-cart"></i>
-            <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
+            <span class="quantity-badge"></span>
         </a>
         @auth
         <a href="" id="login-button"><i data-feather="user"></i></a>
@@ -82,14 +84,14 @@
         <ul>
             <li><span style="cursor: default">Halo, {{ Auth::user()->nama }}</span></li>
             {{-- <li><a href="{{ route('user.profile') }}">Profile</a></li> --}}
-            <li><a href="#">Profil</a></li>
+            {{-- <li><a href="#">Profil</a></li> --}}
             <hr style="border: none; height: 1px; background-color: #333; width: 85%; margin: 2px auto;">
             @if(Auth::check() && Auth::user()->role === 'admin')
-            <li><a href="{{ route('dashboard.index')}}">Dashboard Admin</a></li>
+            {{--<li><a href="{{ route('dashboard.index')}}">Dashboard Admin</a></li>--}}
             @endif    
-            <li><a href="#">Belum Bayar</a></li>
-            <li><a href="#" onclick="event.preventDefault(); paymentNow();">Test Bayar</a></li>
-            <li><a href="#">Riwayat</a></li>
+            <li><a href="{{ route('pending.payment.index')}}">Belum Bayar</a></li>
+            {{--<li><a href="#" onclick="event.preventDefault(); paymentNow();">Test Bayar</a></li>--}}
+            <li><a href="{{ route('settlement.payment.index')}}">Riwayat</a></li>
             <li>
                 <a href="{{ route('api.auth.logout') }}">Keluar</a>
             </li>
@@ -125,7 +127,7 @@
                 </label>
                 <label for="email">
                     <span>Email</span>
-                    <input type="email" name="email" id="email">
+                    <input type="email" name="email" id="email" placeholder="optional">
                 </label>
                 <label for="phone">
                     <span>Phone</span>
@@ -213,9 +215,106 @@
         window.location.href = url.toString();
     }
 
-    
+    $('#checkoutForm').submit(function(e) {       
+        e.preventDefault()
+            
+        let items = $('#cartDataShop').attr('data-items')
+        let total = $('#cartDataShop').attr('data-total')
+        let ctid = $('#cartDataShop').attr('data-ctid')
+        let url   = '{{ route('api.buy.checkout') }}'
+        let formData = $('#checkoutForm').serialize()
+
+        console.log('Items:', items);
+        console.log('Total:', total);      
+        
+        payload = {
+            items: items,
+            total: total,
+            form: formData
+        }
+                    
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: payload,
+            headers: {
+            'X-CSRF-TOKEN': csrfToken
+            },
+            success: function(response) {        
+                console.log('Success:', response);
+                console.log('token: ', response.snap_token)
+                $('#shopping-cart').removeClass('active');
+                // Anggap snap_token adalah token yang Anda terima dari respons API
+                paymentNow(response.snap_token, ctid)
+            },
+            error: function(xhr, status, error) {            
+                console.log('Error:', error);
+                Swal.fire({
+                    title: "Checkout Gagal!",
+                    icon: "error"
+                });
+            }
+        });          
+    });
+
+    const rupiah = (number) => {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0,
+        }).format(number);
+    };
 
     loadCart();
+});
+
+    function bindCartEvents(){
+        $(document).off('click', '.minus-cart');
+        $(document).off('click', '.add-cart');
+        $(document).off('click', '.remove-cart');
+
+        $(document).on('click', '.minus-cart', function() {
+                            var clid = $(this).data('clid');
+                            var url = '{{ route('api.cart.setStockCheckout')}}'
+                            console.log(clid);
+                            cartButton(clid,'minus','put', url)
+                        });
+
+                        // Event delegation untuk tombol add
+                        $(document).on('click', '.add-cart', function() {
+                            var clid = $(this).data('clid');
+                            var url = '{{ route('api.cart.setStockCheckout')}}'
+                            console.log(clid);
+                            cartButton(clid,'plus','put', url)
+                        });
+
+                        // Event delegation untuk tombol remove
+                        $(document).on('click', '.remove-cart', function() {
+                            var clid = $(this).data('clid');
+                            var url = '{{ route('api.cart.setStockCheckout')}}'
+                            console.log(clid);
+                            cartButton(clid,'delete','delete', url)                            
+                        });
+    }
+
+    function cartButton(clid, operator, type, url) {
+        $.ajax({
+            url: url,
+            type: type,
+            data: { clid: clid, operator: operator },
+            headers: {
+                'X-CSRF-TOKEN': csrfToken,
+            },
+            success: function (response) {
+                console.log(response.jumlah);
+                loadCart();
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat meng-update stok.');
+            },
+        });
+    }
 
     function loadCart() 
     {
@@ -254,10 +353,10 @@
                                                 <button id="remove" class="minus-cart" data-clid="${item.clid}">&minus;</button>
                                                 <span>jumlah: ${item.jumlah_produk}</span>
                                                 <button id="add" class="add-cart" data-clid="${item.clid}">&plus;</button>
-                                                <span>Total: ${rupiah(item.tharga_produk)}</span>
+                                                <br/><span>Total: ${rupiah(item.tharga_produk)}</span>
                                             </div>
                                         </div>
-                                        <button id="remove" class="remove-cart" data-clid="${item.clid}">&plus;</button>
+                                        <button id="remove" class="remove-cart" data-clid="${item.clid}">X</button>
                                     </div>
                                 `);
                             });
@@ -270,26 +369,7 @@
                             $('.shopping-cart > h4').css('margin-top','30px');
                             $('.form-container').css('display', 'none');
                         }
-
-                        $(document).on('click', '.minus-cart', function() {
-                            var clid = $(this).data('clid');
-                            console.log(clid);
-                            // removeItemFromCart(clid);
-                        });
-
-                        // Event delegation untuk tombol add
-                        $(document).on('click', '.add-cart', function() {
-                            var clid = $(this).data('clid');
-                            console.log(clid);
-                            // addItemToCart(clid);
-                        });
-
-                        // Event delegation untuk tombol remove
-                        $(document).on('click', '.remove-cart', function() {
-                            var clid = $(this).data('clid');
-                            console.log(clid);
-                            // removeItemFromCart(clid);
-                        });
+                        bindCartEvents();
                     },
                     error: function(xhr, status, error) {
                         console.error('Error:', error);
@@ -307,14 +387,6 @@
             alert('Terjadi kesalahan saat memeriksa status login.');
         }}
     )};
-    
-    const rupiah = (number) => {
-        return new Intl.NumberFormat('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
-            minimumFractionDigits: 0,
-        }).format(number);
-    };
 
     function updateCartList(){
         $.ajax({
@@ -363,44 +435,82 @@
             }
         });
     }    
+    
+    function newCartStatus(){
+    $.ajax({
+                    url: "{{ route('cart.list') }}",
+                    type: 'GET',
+                    success: function(response) {
+                        console.log(response)       
+                        let items = JSON.stringify(response.items)   
+                        let total = response.total_harga                                
 
-    $('#checkoutForm').submit(function(e) {       
-        e.preventDefault()
-            
-        let items = $('#cartDataShop').attr('data-items')
-        let total = $('#cartDataShop').attr('data-total')
-        let ctid = $('#cartDataShop').attr('data-ctid')
-        let url   = '{{ route('api.buy.checkout') }}'
-        let formData = $('#checkoutForm').serialize()
+                        $('#cartDataShop').attr('data-items', items);
+                        $('#cartDataShop').attr('data-total', total);
+                        $('#cartDataShop').attr('data-ctid', response.ctid);
+                        const shoppingCart = $('.shopping-cart-produk');
+                        shoppingCart.html('');                                             
 
-        console.log('Items:', items);
-        console.log('Total:', total);      
-        
-        payload = {
-            items: items,
-            total: total,
-            form: formData
-        }
-                    
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: payload,
-            headers: {
-            'X-CSRF-TOKEN': csrfToken
-            },
-            success: function(response) {        
-                console.log('Success:', response);
-                console.log('token: ', response.snap_token)
+                        if (response.items.length > 0) {
+                            // jika data ada
+                            response.items.forEach(item => {                                
+                                shoppingCart.append(`
+                                    <div class="cart-item">
+                                        <div class="img-detail-cart">
+                                            <img src="{{ asset('img/products/${item.url_image}') }}">
+                                        </div>
+                                        <div class="item-detail">
+                                            <h3>${item.nama_produk}</h3>
+                                            <div class="item-price">
+                                                <span> ${rupiah(item.harga_produk)}</span>
+                                                <button id="remove" class="minus-cart" data-clid="${item.clid}">&minus;</button>
+                                                <span>jumlah: ${item.jumlah_produk}</span>
+                                                <button id="add" class="add-cart" data-clid="${item.clid}">&plus;</button>
+                                                <br/><span>Total: ${rupiah(item.tharga_produk)}</span>
+                                            </div>
+                                        </div>
+                                        <button id="remove" class="remove-cart" data-clid="${item.clid}">X</button>
+                                    </div>
+                                `);
+                            });
+                            
+                            shoppingCart.append(`<h4>Total: <span>${rupiah(response.total_harga)}</span></h4>`);
+                            $('.form-container').css('display','block');                                                                                    
+                        } else {
+                            // Jika keranjang kosong
+                            $('.shopping-cart > h4').append('Keranjang belanja kosong');
+                            $('.shopping-cart > h4').css('margin-top','30px');
+                            $('.form-container').css('display', 'none');
+                        }
 
-                // Anggap snap_token adalah token yang Anda terima dari respons API
-                paymentNow(response.snap_token, ctid)
-            },
-            error: function(xhr, status, error) {            
-                console.log('Error:', error);
-                alert('Checkout Gagal');
+                        $(document).on('click', '.minus-cart', function() {
+                            var clid = $(this).data('clid');
+                            var url = '{{ route('api.cart.setStockCheckout')}}'
+                            console.log(clid);
+                            cartButton(clid,'minus','put', url)
+                        });
+
+                        // Event delegation untuk tombol add
+                        $(document).on('click', '.add-cart', function() {
+                            var clid = $(this).data('clid');
+                            var url = '{{ route('api.cart.setStockCheckout')}}'
+                            console.log(clid);
+                            cartButton(clid,'plus','put', url)
+                        });
+
+                        // Event delegation untuk tombol remove
+                        $(document).on('click', '.remove-cart', function() {
+                            var clid = $(this).data('clid');
+                            var url = '{{ route('api.cart.setStockCheckout')}}'
+                            console.log(clid);
+                            cartButton(clid,'delete','delete', url)
+                            
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                        alert('Terjadi kesalahan saat memuat keranjang.');
+                    }
+                });
             }
-        });          
-    });
-});
 </script>

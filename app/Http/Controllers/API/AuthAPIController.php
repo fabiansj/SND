@@ -45,6 +45,7 @@ class AuthAPIController extends Controller
 
     public function register(Request $request)
     {
+        // dd($request);
         $user = Pengguna::create([
             // 'email' => $request->email,
             'nama' => $request->nama,
@@ -52,8 +53,9 @@ class AuthAPIController extends Controller
             'password' => Hash::make($request->password),
             'alamat' => $request->alamat,
             'no_telp' => $request->no_telp,
-            'role' => $request->role,
+            'role' => $request->role ?? 'user',
         ]);
+        // dd($user);
 
         if ($user){
             return view('auth.index');

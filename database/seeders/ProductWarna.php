@@ -15,16 +15,19 @@ class productWarna extends Seeder
     {
         DB::table('Product_warna')->insert([
             [
-                'warna' => 'Merah',
+                'warna' => 'Merah', // 1
             ],
             [
-                'warna' => 'Kuning',
+                'warna' => 'Kuning', // 2
             ],
             [
-                'warna' => 'Biru',
+                'warna' => 'Biru', // 3
             ],
             [
-                'warna' => 'Hitam',
+                'warna' => 'Hitam', // 4
+            ],
+            [
+                'warna' => 'Lain-Lain', // 5
             ],
         ]);
     }

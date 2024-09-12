@@ -13,9 +13,9 @@
 
     <!-- New Arrival Section Start -->
     <section class="arrival" id="arrival">
-        <div style="text-align: center;">
+        {{--<div style="text-align: center;">
             <img src="{{ asset('img/icon_m.png') }}" alt="mini_icon_snd">
-        </div>
+        </div>--}}
         <h2><span>NEW</span> ARRIVAL</h2>
         <div class="row">
             @foreach ($productDesc as $item)
@@ -129,9 +129,9 @@
     </section>
     <!-- Product Pilihan Section Start -->
     <section class="products" id="products" x-data="products">
-        <div style="text-align: center; margin-top:30px;">
+        {{--<div style="text-align: center; margin-top:30px;">
             <img src="{{ asset('img/icon_m.png') }}" alt="mini_icon_snd">
-        </div>
+        </div>--}}
         <h2><span>PRODUK </span>PILIHAN</h2>
         <div class="products-text-title">
             <p class="text-title">Produk-produk unggulan kami , dengan riset yang mendalam dan uji coba di lapangan secara

@@ -6,10 +6,10 @@
     <title>Send POST Request</title>
     <script>
         async function sendPostRequest() {
-            const url = 'https://182d-202-138-247-143.ngrok-free.app/midtrans/notification';
+            const url = 'http://sndshop.my.id/midtrans/notification';
             const data = {
-                order_id: 'snd-4339358130924',
-                transaction_id: 'd5e88725-c5db-4f06-999a-ad9bbe2389ea',
+                order_id: 'snd-4623802230924',
+                transaction_id: 'f0d2831b-5143-4e87-a867-056f55bfc18b',
                 transaction_status: 'settlement'
             };
 

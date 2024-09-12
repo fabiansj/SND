@@ -12,6 +12,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\API\ProductAPIController;
 use App\Http\Controllers\API\AuthAPIController;
+use App\Http\Controllers\API\CartListAPIController;
+use App\Http\Controllers\CheckoutTransaksiController;
+use App\Http\Repository\CheckoutTransaksiProductRepository;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,14 +61,19 @@ Route::post('/product/detail', [ProductAPIController::class, 'addCart'])->name('
 Route::post('/checkout/product', [PaymentController::class, 'checkoutProduk'])->name('api.buy.checkout');
 Route::post('/checkout/status', [PaymentController::class, 'setStatusPayment'])->name('api.status.checkout');
 Route::post('/midtrans/notification', [PaymentController::class, 'notificationHandler'])->name('api.notification.payment');
+Route::match(['put', 'delete'], '/checkout/operator', [CartListAPIController::class, 'setStockCheckout'])->name('api.cart.setStockCheckout');
+Route::post('/checkout/product/now', [PaymentController::class, 'checkoutProdukNow'])->name('checkout.now');
 
 // Auth
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin'])->group(function () {
         Route::get('/dashboard', [MasterDataController::class, 'index'])->name('dashboard.index');
     });
-    Route::get('/history/payment', [MasterDataController::class, 'index'])->name('dashboard.index');
-    // Route::get('/history', [MasterDataController::class, 'index'])->name('dashboard.index');
+    Route::get('/payment/pending', [CheckoutTransaksiController::class, 'getPendingPayment'])->name('pending.payment.index');
+    Route::get('/payment/pending/detail/{ctid}', [CheckoutTransaksiController::class, 'index'])->name('pending.detail.payment.index');
+    Route::get('/payment/settlement', [CheckoutTransaksiController::class, 'getSettlementPayment'])->name('settlement.payment.index');
+    Route::get('/payment/settlement/detail/{ctid}', [CheckoutTransaksiController::class, 'getDetailSettlement'])->name('settlement.detail.payment.index');
+    // Route::get('/history', [MasterDataController::class, 'index'])->name('dashboard.index');z
 });
 
 Route::get('/check-login', [AuthAPIController::class, 'checkLogin'])->name('api.auth.checkLogin');

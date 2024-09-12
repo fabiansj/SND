@@ -65,10 +65,19 @@ class ProductRepository
         return self::getDataFind($name,$rawName);
     }
 
-    public static function getType($nama)
+    public static function getType($group, $nama)
     {
-        $rawName = 'LOWER(e.type) LIKE ?';
-        return self::getDataFind($nama,$rawName);
+        $nama = strtolower($nama);    
+
+        return DB::table('product as a')
+                ->leftJoin('product_detail as b', 'a.prid', '=', 'b.prid')
+                ->leftJoin('product_warna as c', 'b.pwid', '=', 'c.pwid')
+                ->leftJoin('product_stok as d', 'b.psid', '=', 'd.psid')
+                ->leftJoin('product_jenis as e', 'a.pjid', '=', 'e.pjid')
+                ->select('e.type', 'e.subGroup', 'd.stok', 'c.warna', 'b.url_image', 'a.*')
+                ->where('e.subGroup', 'like', "%{$group}%")
+                ->where('e.type', 'like', "%{$nama}%")
+                ->get();
     }
 
     public static function getDetail($id)

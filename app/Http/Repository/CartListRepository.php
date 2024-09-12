@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 class CartListRepository
 {
     public static function insert($payload){
-        $cartID = DB::table('cart_List')->insert($payload);
+        $cartID = DB::table('cart_list')->insert($payload);
         return $cartID;
     }
 
@@ -50,6 +50,21 @@ class CartListRepository
 
     public static function delete($cid){
         $result = DB::table('cart_list')->where('cid', $cid)->delete();
+        return $result;
+    }
+
+    public static function deleteCartProduct($clid){
+        $result = DB::table('cart_list')->where('clid', $clid)->delete();
+        return $result;
+    }
+
+    public static function setStockCheckout($payload) {        
+        $result = DB::update(" UPDATE cart_list SET jumlah = :jumlah WHERE clid = :clid", $payload);
+        return $result;
+    }    
+
+    public static function getOnlyCartList($clid){
+        $result = DB::table('cart_list')->where('clid', $clid)->first();
         return $result;
     }
 }
