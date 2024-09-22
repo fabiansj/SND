@@ -13,8 +13,16 @@
     <div class="logo">
         <img src="/img/icon_m.png" alt="">
     </div>
-    <a href="{{ route('kelola.dashboard.index')}}" class="active"><i class="fas fa-tachometer-alt"></i><span> Dashboard</span></a>
-    <a href="{{ route('kelola.products.index') }}"><i class="fas fa-box"></i><span> Produk</span></a>
-    <a href="{{ route('kelola.user.index') }}"><i class="fas fa-user-alt"></i><span> User</span></a>
-    <a href="#"><i class="fas fa-archive"></i><span> Barang Inventaris</span></a>
+    <a href="{{ route('kelola.dashboard.index')}}" class="{{ Request::is('dashboard*') ? 'active' : '' }}">
+        <i class="fas fa-tachometer-alt"></i><span> Dashboard</span>
+    </a>
+    <a href="{{ route('kelola.products.index') }}" class="{{ Request::is('kelola/produk*') ? 'active' : '' }}">
+        <i class="fas fa-box"></i><span> Produk</span>
+    </a>
+    <a href="{{ route('kelola.user.index') }}" class="{{ Request::is('kelola/user*') ? 'active' : '' }}">
+        <i class="fas fa-user-alt"></i><span> User</span>
+    </a>
+    <a href="{{ route('kelola.inventaris.index') }}" class="{{ Request::is('kelola/inventaris*') ? 'active' : '' }}">
+        <i class="fas fa-archive"></i><span> Barang Inventaris</span>
+    </a>    
 </div>

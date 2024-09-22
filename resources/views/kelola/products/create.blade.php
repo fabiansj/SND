@@ -5,8 +5,8 @@
 @section('content') 
     <div class="kelola-container">
     <h1>Tambah Produk Baru</h1>    
-    {{-- <form action="{{{ route('kelola.products.store') }}}" method="POST" enctype="multipart/form-data"> --}}
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('kelola.products.store') }}" method="POST" enctype="multipart/form-data">
+    {{-- <form action="" method="POST" enctype="multipart/form-data"> --}}
         @csrf
         <div class="form-group">
             <label for="nama">Nama Produk</label>
@@ -40,10 +40,7 @@
         <div class="form-group">
             <label for="jenis_id">Type</label>
             <select class="form-control" id="pjid" name="pjid" style="width:150px" required>
-                <option value="">-- pilih tipe --</option>
-                {{-- @foreach($type as $t)
-                    <option value="{{ $t->pjid }}">{{ $t->type }}</option>
-                @endforeach --}}
+                <option value="">-- pilih tipe --</option>                
             </select>
         </div>
         <div class="form-group">
@@ -58,38 +55,61 @@
             <label for="stok">Stok</label>
             <input type="number" class="form-control" id="stok" name="stok" required>
         </div>
+        @if(session('error'))
+            <div class="alert alert-success" style="text-align: center">
+                {{session('error')}}
+            </div>
+        @endif
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
 </div>
 
 
-<script>
-    $('.jenis_product_id').on('change', function(){
+<script>    
+    $(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('.jenis_product_id').on('change', function() {
+        var selectedJenis = $(this).val();
+
         $.ajax({
             url: '{{ route('kelola.products.type') }}',
-            type: 'post',
-            data: {jenis: $(this).val()},
-            headers: {
-                'X-CSRF-TOKEN': csrfToken,
-            },
-            success: function(response){
+            type: 'POST',
+            data: { jenis: selectedJenis },
+            dataType: 'json',
+            success: function(response) {
                 $('#pjid').empty();
-                
-                response.data.forEach(element => {
-                    console.log(element.type)
-                    if(response.data.length > 1){
-                        var option = $('<option></option>').html(element.type).attr('value', element.pjid).prop('selected', true);
-                    }else{
-                        var option = $('<option></option>').html('tidak ada tipe').attr('value', element.pjid).prop('selected', true);
-                    }
-                    $('#pjid').append(option);
-                });
+                console.log(response);
+                if (response.data && response.data.length > 1) {
+                    response.data.forEach(function(element) {
+                        // console.log(element);
+                        var option = $('<option></option>')
+                            .text(element.type)
+                            .attr('value', element.pjid);
+                        $('#pjid').append(option);
+                    });
+                } else {
+                    response.data.forEach(function(element) {                        
+                        $('#pjid').append($('<option></option>')
+                            .text(element.subGroup)
+                            .attr('value', element.pjid)
+                            .prop('selected', true));
+                    });
+                }                
             },
-            error: function(response){
-                console.log(response)
-
+            error: function(xhr, status, error) {
+                console.error('AJAX Error:', status, error);
+                console.log(xhr.responseText);
+                $('#pjid').empty().append($('<option></option>')
+                    .text('Error loading types')
+                    .attr('value', ''));
             }
-        })
-    })
+        });
+    });
+});
 </script>
 @endsection

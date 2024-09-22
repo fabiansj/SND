@@ -5,56 +5,45 @@
 @section('content')   
     <div class="container-register"><br>
         <div class="col-md-6 col-md-offset-3">
-            <h2 class="text-center">BUAT AKUN</h3>
+            <h2 class="text-center">Tambah Data Inventaris</h3>
             <hr>
             @if(session('message'))
             <div class="alert alert-success">
                 {{session('message')}}
             </div>
             @endif
-            <form action="{{ route('kelola.user.store') }}" method="post">
+            <form action="{{ route('kelola.inventaris.store') }}" method="post">
             @csrf
                 {{-- <div class="form-group">
                     <label><i class="fa fa-envelope"></i> Email</label>
                     <input type="email" name="email" class="form-control" placeholder="Email" required="">
                 </div> --}}
                 <div class="form-group">
-                    <label></i> Nama Lengkap</label>
+                    <label></i> Nama Barang</label>
                     <input type="text" name="nama" class="form-control" placeholder="Nama" required>
                 </div>
                 <div class="form-group">
-                    <label></i> Username</label>
-                    <input type="text" name="username" class="form-control" placeholder="Username" required>
+                    <label></i> Jumlah</label>
+                    <input type="number" name="jumlah" class="form-control" placeholder="Jumlah" required>
                 </div>
                 <div class="form-group">
-                    <label> Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    <label></i> Harga</label>
+                    <input type="number" name="harga" class="form-control" placeholder="Harga" required>
                 </div>
                 <div class="form-group">
-                    <label></i> Alamat</label>
-                    <input type="text" name="alamat" class="form-control" placeholder="Alamat" required>
-                </div>
-                <div class="form-group">
-                    <label> Role</label>
-                    <select name="role" id="role" required>
-                        <option value="user">user</option>
-                        <option value="admin">admin</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label> No Telepon</label>
-                    <input type="number" name="no_telp" class="form-control" placeholder="no telepon" required>
+                    <label></i> Nama Pembeli</label>
+                    <input type="text" name="nama_pembeli" class="form-control" placeholder="nama pembeli" required>
                 </div>
                 @if(session('error'))
                     <div class="alert alert-success" style="text-align: center">
                         {{ session('error') }}
                     </div>
                 @endif
-                <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-user"></i> Register</button>
+                <button type="submit" class="btn btn-primary btn-block"></i> Tambah Barang</button>
                 <hr>
             </form>
             <div class="back-button-div">
-            <a href="{{ route('kelola.user.index') }}" class="btn btn-primary btn-block btn-back"></i> Back</a>
+            <a href="{{ route('kelola.inventaris.index') }}" class="btn btn-primary btn-block btn-back"> Back</a>
             </div>
         </div>
     </div>

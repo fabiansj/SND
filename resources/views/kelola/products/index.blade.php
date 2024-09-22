@@ -8,7 +8,7 @@
         <a href="{{ route('kelola.products.create') }}" class="btn btn-primary mb-3">Tambah Produk</a>
     
         @if(session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success" style="text-align: center">
                 {{ session('success') }}
             </div>
         @endif

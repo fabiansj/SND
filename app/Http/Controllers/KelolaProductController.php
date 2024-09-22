@@ -32,10 +32,9 @@ class KelolaProductController extends Controller
     {        
         $pid = Auth::user()->pid;
         // dd($request->all());
-        $checkProduct = current(ProductRepository::getName($request->nama));
-        
+        $checkProduct = ProductRepository::checkName($request->nama);        
         if($checkProduct){
-            return redirect()->back()->with('error', 'Data Sudah Ada')->withInput();
+            return redirect()->back()->with('error', 'Data Sudah Ada')->withInput();            
         }
         
         $request->validate([
@@ -58,8 +57,9 @@ class KelolaProductController extends Controller
                 $gambar->move(public_path('img/products'), $gambarName);
             }
             
+            $gambarName = '';
             Log::info('Failed to add cart: ' . $request);
-            Log::info('File uploaded: ' . $gambarName . ' at ' . now());
+            Log::info('File uploaded: ' . $gambarName. ' at ' . now());
             Log::error('Failed to add cart, request data: ', [
                 'request' => $request->all(), // Menampilkan semua request untuk debugging
                 'time' => now() // Menambahkan timestamp
@@ -80,7 +80,7 @@ class KelolaProductController extends Controller
             $getPSID = DB::table('product_stok')->insertGetId([
                 'stok' => $request->stok,
             ]);
-
+                        
             DB::table('product_detail')->insert([
                 'prid' => $getPRID, 
                 'pwid' => $request->pwid,
@@ -96,7 +96,7 @@ class KelolaProductController extends Controller
             DB::rollBack();
             // Log the error message for debugging purposes
             Log::error('Error in store method: ' . $e->getMessage());
-            return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan data.')->withInput();
+            return redirect()->back()->with('error', 'Terjadi kesalahan dalam input data produk')->withInput();
         }
         
     }
@@ -169,11 +169,11 @@ class KelolaProductController extends Controller
         return redirect()->route('kelola.products.index')->with('success', 'Produk berhasil dihapus.');
     }
 
-    public function getType(Request $request){
-        // dd($request->jenis);
+    public function getType(Request $request){        
         $data = DB::table('product_jenis')
                 ->whereRaw('LOWER(subGroup) LIKE ?', ['%' . strtolower($request->jenis) . '%'])
                 ->get();
+        // dd($data);
         return response()->json(['data' => $data]);
     }
 }

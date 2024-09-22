@@ -1,6 +1,6 @@
 @extends('kelola.layouts.master')
 
-@section('title', 'List Produk')
+@section('title', 'Edit Produk')
 
 @section('content')    
     <div class="container">
@@ -25,19 +25,18 @@
                 <textarea class="form-control" id="keterangan" name="keterangan" required>{{ $product->keterangan }}</textarea>
             </div>
             <div class="form-group">
-                <label for="jenis_id">Jenis</label>
-                <select class="form-control">
+                <label for="jenis_product_id">Jenis</label>
+                <select class="form-control jenis_product_id" id="jenis_product_id" name="jenis_product_id">
+                    <option value="">-- pilih jenis --</option>
                     @foreach($jenis as $j)
-                        <option value="" {{ $product->subGroup == $j->subGroup ? 'selected' : '' }}>{{ $j->subGroup }}</option>
+                        <option value="{{ $j->subGroup }}" {{ $product->subGroup == $j->subGroup ? 'selected' : '' }}>{{ $j->subGroup }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group">
                 <label for="jenis_id">Type</label>
                 <select class="form-control" id="jenis_id" name="jenis_id" required>
-                    @foreach($type as $t)
-                        <option value="{{ $t->pjid }}" {{ $product->pjid == $t->pjid ? 'selected' : '' }}>{{ $t->type }}</option>
-                    @endforeach
+                    <option value="">-- pilih tipe --</option>
                 </select>
             </div>
             <div class="form-group">
@@ -55,4 +54,58 @@
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
+    
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            // Function to load types
+            function loadTypes(selectedJenis) {
+                $.ajax({
+                    url: '{{ route('kelola.products.type') }}',
+                    type: 'POST',
+                    data: { jenis: selectedJenis },
+                    dataType: 'json',
+                    success: function(response) {
+                        $('#jenis_id').empty().append('<option value="">-- pilih tipe --</option>');
+                        if (response.data && response.data.length > 0) {
+                            response.data.forEach(function(element) {
+                                var option = $('<option></option>')
+                                    .text(element.type || element.subGroup)
+                                    .attr('value', element.pjid);
+                                $('#jenis_id').append(option);
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX Error:', status, error);
+                        console.log(xhr.responseText);
+                        $('#jenis_id').empty().append($('<option></option>')
+                            .text('Error loading types')
+                            .attr('value', ''));
+                    }
+                });
+            }
+
+            // Load types on page load if jenis is already selected
+            var initialJenis = $('#jenis_product_id').val();
+            if (initialJenis) {
+                loadTypes(initialJenis);
+            }
+
+            // Load types when jenis changes
+            $('#jenis_product_id').on('change', function() {
+                var selectedJenis = $(this).val();
+                if (selectedJenis) {
+                    loadTypes(selectedJenis);
+                } else {
+                    $('#jenis_id').empty().append('<option value="">-- pilih tipe --</option>');
+                }
+            });
+        });
+    </script>
 @endsection

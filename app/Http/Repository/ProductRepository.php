@@ -71,6 +71,11 @@ class ProductRepository
         return self::getDataFind($name,$rawName);
     }
 
+    public static function checkName($name)
+    {
+        return DB::table('product')->where('nama', $name)->first();
+    }
+
     public static function getGroup($name)
     {
         $rawName = 'LOWER(e.subGroup) LIKE ?';

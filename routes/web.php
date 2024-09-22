@@ -16,6 +16,7 @@ use App\Http\Controllers\API\CartListAPIController;
 use App\Http\Controllers\CheckoutTransaksiController;
 use App\Http\Controllers\KelolaProductController;
 use App\Http\Controllers\KelolaUserController;
+use App\Http\Controllers\productMentahController;
 use App\Http\Repository\CheckoutTransaksiProductRepository;
 use Illuminate\Support\Facades\Route;
 
@@ -77,16 +78,21 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/kelola/produk/edit/{id}', [KelolaProductController::class, 'edit'])->name('kelola.products.edit');
         Route::put('/kelola/produk/{id}', [KelolaProductController::class, 'update'])->name('kelola.products.update');
         Route::delete('/kelola/produk/{id}', [KelolaProductController::class, 'destroy'])->name('kelola.products.destroy');
-        Route::post('/kelola/produk', [KelolaProductController::class, 'getType'])->name('kelola.products.type');
+        Route::post('/kelola/produk/tipe', [KelolaProductController::class, 'getType'])->name('kelola.products.type');
 
         // user
         Route::get('/kelola/user', [KelolaUserController::class, 'index'])->name('kelola.user.index');
         Route::get('/kelola/user/create', [KelolaUserController::class, 'create'])->name('kelola.user.create');
-        Route::post('/kelola/user', [KelolaUserController::class, 'store'])->name('kelola.user.store');
+        Route::post('/kelola/user', [KelolaUserController::class, 'store'])->name('kelola.user.store');        
         Route::get('/kelola/user/edit/{id}', [KelolaUserController::class, 'edit'])->name('kelola.user.edit');
         Route::put('/kelola/user/{id}', [KelolaUserController::class, 'update'])->name('kelola.user.update');
         Route::delete('/kelola/user/{id}', [KelolaUserController::class, 'destroy'])->name('kelola.user.destroy');
+
         //rekap data
+        Route::get('/kelola/inventaris', [ProductMentahController::class, 'index'])->name('kelola.inventaris.index');
+        Route::get('/kelola/inventaris/create', [ProductMentahController::class, 'create'])->name('kelola.inventaris.create');
+        Route::post('/kelola/inventaris', [ProductMentahController::class, 'store'])->name('kelola.inventaris.store');
+        Route::delete('/kelola/inventaris/{id}', [ProductMentahController::class, 'destroy'])->name('kelola.inventaris.destroy');
     });
     
     Route::post('/produk/status', [CheckoutTransaksiController::class, 'setStatusProduk'])->name('set.status.produk');

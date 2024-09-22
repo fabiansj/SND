@@ -39,6 +39,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="{{ asset('css/kelola_style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     @include('kelola.partials.sidebar')
@@ -46,7 +47,7 @@
         @yield('content')
     </div>
     
-    <script>
+    <script>        
         $(document).ready(function(){
             $("#menu-button").click(function(){
                 var sidebar = $("#sidebar");
