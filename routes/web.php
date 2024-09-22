@@ -16,7 +16,7 @@ use App\Http\Controllers\API\CartListAPIController;
 use App\Http\Controllers\CheckoutTransaksiController;
 use App\Http\Controllers\KelolaProductController;
 use App\Http\Controllers\KelolaUserController;
-use App\Http\Controllers\productMentahController;
+use App\Http\Controllers\ProductMentahController;
 use App\Http\Repository\CheckoutTransaksiProductRepository;
 use Illuminate\Support\Facades\Route;
 
