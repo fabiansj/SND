@@ -499,6 +499,7 @@ color: var(--primary);
     font-size: 2.6rem;
     margin-bottom: 2rem;
     color: var(--primary);
+    padding-top: 5rem;
 }
 
 .about h2 span,
@@ -627,24 +628,24 @@ color: var(--primary);
 } */
 
 /* Arrival */
-.arrival h2,
+/* .arrival h2,
 .contact h2 {
-}
+} */
 
 .arrival .row {
     display: flex;
-    flex-wrap: wrap; /*flex-wrap = kalo kebanyakan langsung turun kebawah */
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 .arrival .row .arrival-card {
     border-radius: 10px;
     background-color: white;
-    height: 500px;
+    /* Adjust width and height as needed for your content */
     width: 300px;
+    height: 500px;
     margin: 10px 20px 30px;
     text-align: center;
-    /* margin-top: 4rem; */
     overflow: hidden;
     position: relative;
     display: flex;
@@ -662,18 +663,18 @@ color: var(--primary);
     top: 40px;
     transition: right 0.3s ease;
 }
+
 .arrival .row .arrival-card:hover img {
     right: 0px;
 }
 
 .arrival-card .arrival-new-product {
     display: block;
-    width: 375px;
+    width: 375px; /* Adjust width if needed */
     height: 55px;
-    /* padding-top: 4px; */
     position: relative;
     top: 32%;
-    left: -53.5%;
+    left: -53.5%; /* Adjust left position if needed */
     transform: translate(0, 0%) rotate(90deg);
     background-color: var(--card-info);
     clip-path: polygon(0 0, 90% 0, 100% 100%, 0 100%);
@@ -683,7 +684,7 @@ color: var(--primary);
 }
 
 .arrival .row .arrival-card:hover .arrival-new-product {
-    left: -72.5%;
+    left: -72.5%; /* Adjust left position if needed */
 }
 
 .arrival .row .arrival-card:hover .arrival-new-product.show {
@@ -692,7 +693,7 @@ color: var(--primary);
 
 .arrival-card .arrival-new-product p {
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 2.5rem; /* Adjust font size as needed */
     text-align: center;
     color: white;
     position: relative;
@@ -705,7 +706,7 @@ color: var(--primary);
 
 .arrival .row .arrival-card .arrival-card-content .arrival-card-price {
     margin: 0.5rem auto 0.5rem;
-    font-size: 2rem;
+    font-size: 2rem; /* Adjust font size as needed */
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     line-height: 2rem;
@@ -717,13 +718,12 @@ color: var(--primary);
     line-height: 1rem;
 }
 
-.arrival .row .arrival-card .arrival-card-content .arrival_detail_show {
+.arrival .row .arrival-card .arrival_detail_show {
     background-color: rgb(238, 236, 236);
     display: block;
     color: white;
     position: absolute;
-    bottom: -75px;
-    /* bottom: 0px; */
+    bottom: -75px; /* Adjust position as needed */
     height: 75px;
     width: 100%;
     border-radius: 10px;
@@ -836,7 +836,7 @@ color: var(--primary);
     display: grid;
     /* grid-template-columns: repeat(auto-fit, minmax(20%, 1fr)); */
     grid-template-columns: repeat(4, 20%);
-    gap: 4rem;
+    gap: 6rem;
     margin: 4rem 0;
 }
 
@@ -1044,7 +1044,7 @@ color: var(--primary);
     margin: 10px 0;
     font-size: 1em;
     font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
+    text-align: left;
     color: rgb(117, 117, 117);
 }
 
@@ -1623,9 +1623,17 @@ button:disabled:hover {
         font-size: 1.1em; /* Contoh penyesuaian ukuran link */
     }
 
-    /* .products .row {
-        grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
-        } */
+    .products .row {
+        display: grid;
+        /* grid-template-columns: repeat(auto-fit, minmax(20%, 1fr)); */
+        grid-template-columns: repeat(3, 25%) !important;
+        gap: 5rem 7rem;
+        margin: 4rem 0;
+    }
+
+    .arrival .row .arrival-card {
+        width: calc(33.33% - 40px); /* Menyesuaikan 3 item per baris */
+    }
 }
 
 /* Tablet */
@@ -1675,9 +1683,13 @@ button:disabled:hover {
         justify-content: space-between;
     }
 
-    /* .products .row {
-        grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
-    } */
+    .products .row {
+        display: grid;
+        /* grid-template-columns: repeat(auto-fit, minmax(20%, 1fr)); */
+        grid-template-columns: repeat(2, 40%) !important;
+        gap: 5rem 12rem;
+        margin: 4rem 0;
+    }
 
     #hamburger-menu {
         display: inline-block;
@@ -1807,6 +1819,10 @@ button:disabled:hover {
         top: 18%;
     }
 
+    .arrival .row .arrival-card {
+        width: calc(50% - 40px); /* Menyesuaikan 2 item per baris */
+    }
+
     .products .product-content .product-overflow-content a {
         font-size: 2vh;
     }
@@ -1829,6 +1845,28 @@ button:disabled:hover {
     /* .ourteam .container-ourteam .ourteam-card .ourteam-img .linier-img{
         bottom: 254px;
     } */
+
+    .arrival .row {
+        justify-content: space-around; /* Atur jarak antar card agar lebih merata */
+    }
+
+    .arrival .row .arrival-card {
+        width: 45%; /* Atur lebar card menjadi 45% untuk mengakomodasi 2 card per baris */
+        margin: 10px;
+    }
+
+    .arrival-card .arrival-new-product {
+        width: 250px; /* Sesuaikan lebar teks */
+        left: -45%; /* Sesuaikan posisi teks */
+    }
+
+    .arrival-card .arrival-new-product p {
+        font-size: 2rem; /* Perkecil ukuran font */
+    }
+
+    .arrival-card .arrival-card-price {
+        font-size: 1.8rem; /* Perkecil ukuran font */
+    }
 }
 
 /* Mobile */
@@ -1876,9 +1914,13 @@ button:disabled:hover {
         margin-top: 2px;
     }
 
-    /* .products .row {
-        grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
-    } */
+    .products .row {
+        display: grid;
+        /* grid-template-columns: repeat(auto-fit, minmax(20%, 1fr)); */
+        grid-template-columns: repeat(1, 85%) !important;
+        gap: 4rem;
+        margin: 4rem 0;
+    }
 
     .products .product-content .product-overflow-content a {
         font-size: 6vw;
@@ -1892,6 +1934,24 @@ button:disabled:hover {
         transform: scale(1.1);
         height: 220px;
     } */
+
+    .arrival .row .arrival-card {
+        width: 90%; /* Atur lebar card menjadi 90% untuk 1 card per baris */
+        margin: 10px 5px;
+    }
+
+    .arrival-card .arrival-new-product {
+        width: 200px; /* Sesuaikan lebar teks */
+        left: -40%; /* Sesuaikan posisi teks */
+    }
+
+    .arrival-card .arrival-new-product p {
+        font-size: 1.5rem; /* Perkecil ukuran font */
+    }
+
+    .arrival-card .arrival-card-price {
+        font-size: 1.6rem; /* Perkecil ukuran font */
+    }
 }
 
 /* @media (max-width: 1366px) 

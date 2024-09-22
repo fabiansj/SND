@@ -394,7 +394,11 @@ function updateNewCartList() {
         },
         error: function (xhr, status, error) {
             console.error('Error:', error);
-            alert('Terjadi kesalahan saat memuat keranjang.');
+            // alert('Terjadi kesalahan saat memuat keranjang.');
+            Swal.fire({
+                title: 'Gagal memuat keranjang',
+                icon: 'error',
+            });
         },
     });
 }

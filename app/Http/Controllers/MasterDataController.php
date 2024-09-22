@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class MasterDataController extends Controller
 {
     public function index(){
-        return view('master_data.index');
+        return view('kelola.index');
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Repository\CartRepository;
 use App\Http\Repository\CartListRepository;
+use App\Http\Repository\GLTransStockRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,15 +19,24 @@ class ProductAPIController extends Controller
     {               
         // dd($request);
         $pid    = Auth::user()->pid;        
+        
         if($request->detail_produk == true){            
             $data = ProductRepository::findID($request->pid);            
         }else{        
             $data = $request;
         }
         
+        $cekStok = ProductRepository::findID($request->pid);
+        $cekTrans = abs(GLTransStockRepository::getStok($cekStok->prid));
+
         try {
             DB::beginTransaction();
-            $cekProduct = CartListRepository::getOne($data->prid, $pid);
+            
+            if($cekStok->stok - $cekTrans <= 0){
+                return response()->json(['message' => 'Stok Barang Habis'], 500);
+            }
+
+            $cekProduct = CartListRepository::getOne($data->prid, $pid);            
             if ($cekProduct) {
                 $addStock = $cekProduct->jumlah + 1;                
                 CartListRepository::updateStock($addStock, $cekProduct->clid);

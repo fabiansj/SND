@@ -42,7 +42,8 @@
                 url: "{{ route('api.auth.checkLogin') }}",
                 type: 'GET',
                 success: function(response) {
-                    if(response.loggedIn){            
+                    if(response.loggedIn){   
+                        if (response.role != 'admin'){
                         $.ajax({
                             url: " {{ route('api.product.create') }} ",
                             type: 'POST',
@@ -53,7 +54,7 @@
                             success: function(response) {
                                 // Tangani respons sukses
                                 console.log('Success:', response);
-                                alert('Produk telah berhasil ditambahkan ke keranjang.');
+                                // alert('Produk telah berhasil ditambahkan ke keranjang.');
                                 $.ajax({
                                     url: "{{ route('cart.list') }}",
                                     type: 'GET',
@@ -123,23 +124,48 @@
                                     },
                                     error: function(xhr, status, error) {
                                         console.error('Error:', error);
-                                        alert('Terjadi kesalahan saat memuat keranjang.');
+                                        // alert('Terjadi kesalahan saat memuat keranjang.');
+                                        Swal.fire({
+                                            title: "Gagal memuat keranjang",
+                                            icon: "error"
+                                        });
                                     }
                                 });
                             },
                             error: function(xhr, status, error) {
                                 // Tangani respons error
                                 console.log('Error:', error);
-                                alert('Terjadi kesalahan saat menambahkan produk ke keranjang.');
+                                // alert('Terjadi kesalahan saat menambahkan produk ke keranjang.');
+                                Swal.fire({
+                                    title: "Stok Barang Habis",
+                                    icon: "error"
+                                });
                             }
                         });
+                        }else{
+                            Swal.fire({
+                                title: "Gunakan akun user untuk belanja",
+                                icon: "error"
+                            });
+                            $('.shopping-cart > h4').empty();
+                            $('.shopping-cart > h4').append('Silahkan menggunakan akun user untuk belanja');
+                            $('.shopping-cart > h4').css('margin-top','30px');
+                            $('.form-container').css('display', 'none'); 
+                        }
                     }else{
-                        alert('Anda perlu login untuk menambahkan produk.');
+                        // alert('Anda perlu login untuk menambahkan produk.');
+                        Swal.fire({
+                            title: "Anda perlu login untuk menambahkan produk",
+                            icon: "error"
+                        });
                     }
                 },
-                error: function(respons){
-                    console.log('Error:', response.error);
-                    alert('Terjadi kesalahan saat memeriksa status login.');
+                error: function(response){
+                    console.log('Error:', response);
+                    Swal.fire({
+                            title: "Anda perlu login untuk menambahkan produk",
+                            icon: "error"
+                    });
                 }
             })
         });

@@ -17,10 +17,22 @@ class ProductRepository
         return $sql;
     }
 
+    public static function getLimit() 
+    {
+        $sql = DB::table('product')
+            ->leftJoin('product_detail', 'product.prid', '=', 'product_detail.prid')
+            ->select('product.*', 'product_detail.url_image')
+            ->orderBy('product.created_at', 'desc')
+            ->limit(5)
+            ->get();
+        return $sql;
+    }
+
     public static function getAll(){
         $sql = DB::table('product')
             ->leftJoin('product_detail', 'product.prid', '=', 'product_detail.prid')
             ->select('product.*', 'product_detail.url_image')                
+            ->limit(8)
             ->get();
         return $sql;
     }    
@@ -87,11 +99,21 @@ class ProductRepository
                 ->leftJoin('product_warna as c', 'b.pwid', '=', 'c.pwid')
                 ->leftJoin('product_stok as d', 'b.psid', '=', 'd.psid')
                 ->leftJoin('product_jenis as e', 'a.pjid', '=', 'e.pjid')
-                ->select('e.type', 'e.subGroup', 'd.stok', 'c.warna', 'b.url_image', 'a.*')
+                ->select('e.type', 'e.subGroup', 'd.stok', 'c.warna', 'b.url_image', 'a.*', 'c.pwid')
                 ->where('a.prid', $id)
                 ->first();
         return $sql;
     }    
+
+    public static function getAllData(){
+        return DB::table('product as a')
+                ->leftJoin('product_detail as b', 'a.prid', '=', 'b.prid')
+                ->leftJoin('product_warna as c', 'b.pwid', '=', 'c.pwid')
+                ->leftJoin('product_stok as d', 'b.psid', '=', 'd.psid')
+                ->leftJoin('product_jenis as e', 'a.pjid', '=', 'e.pjid')
+                ->select('e.type', 'e.subGroup', 'd.stok', 'c.warna', 'b.url_image', 'a.*')
+                ->get();
+    }
 
     //API WEB CONTENT
     // public static function insert($data)
@@ -157,4 +179,6 @@ class ProductRepository
     {
         return 'yes';
     }
+
+    
 }

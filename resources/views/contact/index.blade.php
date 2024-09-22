@@ -46,7 +46,10 @@
             
             window.open(urlWhatsApp, '_blank');
         } else {
-            alert('Harap lengkapi semua kolom');
+            Swal.fire({
+                title: "Lengkapi semua kolom",
+                icon: "error"
+            });
         }
     }
     </script>

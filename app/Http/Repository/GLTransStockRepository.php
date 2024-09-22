@@ -23,4 +23,8 @@ class GLTransStockRepository
         return $result[0];
     }
     
+    public static function getStok($prid) 
+    {
+        return DB::table('gl_trans_stock')->where('prid', $prid)->sum('jumlah');
+    }
 }

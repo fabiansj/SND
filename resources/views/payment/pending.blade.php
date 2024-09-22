@@ -22,6 +22,7 @@
                         {{-- <img class="img-thumbnail" src="{{ asset('img/products/' . $item->url_image) }}"> --}}
                         <div class="product-content-riwayat">
                             <div class="product-price-riwayat"><span>Total : Rp {{ number_format($item->final_price, 0, ',', '.') }}</span></div>
+                            <div class="product-nama-riwayat"><p>Order ID : {{ $item->order_id }}</p></div>
                             <div class="product-nama-riwayat"><p>Nama penerima : {{ $item->nama }}</p></div>
                             <div class="product-nama-riwayat"><p>Alamat penerima : {{ $item->alamat }}</p></div>
                             <div class="product-nama-riwayat"><p>No Telepon : {{ $item->no_telp }}</p></div>
@@ -39,45 +40,7 @@
     </section>    
     <!-- Product Section End -->
     <script>
-    $('.add-to-cart').on('click', function(e) {
-        e.preventDefault();
-        var productId = $(this).data('product-id')
-        console.log('yes')
-
-        $.ajax({
-            url: "{{ route('api.auth.checkLogin') }}",
-            type: 'GET',
-            success: function(response) {
-                if(response.loggedIn){            
-                    $.ajax({
-                        url: " {{ route('api.product.create') }} ",
-                        type: 'POST',
-                        data: {pid : productId, detail_produk : true},
-                        headers: {
-                            'X-CSRF-TOKEN': csrfToken
-                        },
-                        success: function(response) {
-                            // Tangani respons sukses
-                            console.log('Success:', response);
-                            alert('Produk telah berhasil ditambahkan ke keranjang.');
-                        },
-                        error: function(xhr, status, error) {
-                            // Tangani respons error
-                            console.log('Error:', error);
-                            alert('Terjadi kesalahan saat menambahkan produk ke keranjang.');
-                        }
-                    });
-                }else{
-                    alert('Anda perlu login untuk menambahkan produk.');
-                }
-            },
-            error: function(respons){
-                console.log('Error:', response.error);
-                alert('Terjadi kesalahan saat memeriksa status login.');
-            }
-        })
-    });
-
+    
     $(document).on('click', '#pay-now', function(){
         var snap_token = $(this).data('snap-token')
         console.log(snap_token)

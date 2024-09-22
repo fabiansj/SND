@@ -64,15 +64,15 @@
         </ul>
     </div>C
     <div class="navbar-extra">
-        <a href="#" id="search-button"><i data-feather="search"></i></a>
+        <a href="javascript:void(0);" id="search-button"><i data-feather="search"></i></a>
         <a href="#" id="shopping-cart-button">
             <i data-feather="shopping-cart"></i>
             <span class="quantity-badge"></span>
         </a>
         @auth
-        <a href="" id="login-button"><i data-feather="user"></i></a>
+        <a href="javascript:void(0);" id="login-button"><i data-feather="user"></i></a>
         @else
-        <a href="{{ route('auth.login') }}"><i data-feather="user"></i></a>
+        <a href="{{ route('auth.login') }}" id="login-button"><i data-feather="user"></i></a>
         @endauth
         
 
@@ -87,11 +87,14 @@
             {{-- <li><a href="#">Profil</a></li> --}}
             <hr style="border: none; height: 1px; background-color: #333; width: 85%; margin: 2px auto;">
             @if(Auth::check() && Auth::user()->role === 'admin')
-            {{--<li><a href="{{ route('dashboard.index')}}">Dashboard Admin</a></li>--}}
+            <li><a href="{{ route('kelola.dashboard.index')}}">Dashboard Admin</a></li>
+            <li><a href="{{ route('settlement.payment.index')}}">Transaksi</a></li>
             @endif    
+            @if(Auth::check() && Auth::user()->role !== 'admin')
             <li><a href="{{ route('pending.payment.index')}}">Belum Bayar</a></li>
             {{--<li><a href="#" onclick="event.preventDefault(); paymentNow();">Test Bayar</a></li>--}}
             <li><a href="{{ route('settlement.payment.index')}}">Riwayat</a></li>
+            @endif
             <li>
                 <a href="{{ route('api.auth.logout') }}">Keluar</a>
             </li>
@@ -108,6 +111,7 @@
 
 
     <!-- Shopping Cart Start -->
+    {{--@if(Auth::user()->role !== 'admin')--}}
     <div class="shopping-cart">
         <!-- Placeholder untuk item keranjang -->
         <h4></h4>
@@ -141,6 +145,12 @@
             </form>
         </div>
     </div>
+    {{--@else
+    <div class="shopping-cart">
+        <!-- Placeholder untuk item keranjang -->
+        <h4>Silahkan Belanja Menggunakan akun user</h4>
+    </div>
+    @endif--}}
     <!-- Shopping Cart End -->
 </nav>
 <div id="loading-indicator" style="display: none;">
@@ -311,7 +321,11 @@
             },
             error: function (xhr, status, error) {
                 console.error('Error:', error);
-                alert('Terjadi kesalahan saat meng-update stok.');
+                // alert('Terjadi kesalahan saat meng-update stok.');
+                Swal.fire({
+                    title: "Gagal mengupdate stok",
+                    icon: "error"
+                });
             },
         });
     }
@@ -324,6 +338,8 @@
         success: function(response) {
             if (response.loggedIn) {
                 // Pengguna sudah login, muat data keranjang
+                console.log(response)
+                if (response.role != 'admin'){
                 $.ajax({
                     url: "{{ route('cart.list') }}",
                     type: 'GET',
@@ -373,9 +389,18 @@
                     },
                     error: function(xhr, status, error) {
                         console.error('Error:', error);
-                        alert('Terjadi kesalahan saat memuat keranjang.');
+                        // alert('Terjadi kesalahan saat memuat keranjang.');
+                        Swal.fire({
+                            title: "Terjadi kesalahan saat memuat keranjang",
+                            icon: "error"
+                        });
                     }
                 });
+                } else{
+                    $('.shopping-cart > h4').append('Silahkan menggunakan akun user untuk belanja');
+                    $('.shopping-cart > h4').css('margin-top','30px');
+                    $('.form-container').css('display', 'none'); 
+                }
             } else {                
                 $('.shopping-cart > h4').append('Memerlukan login untuk melihat keranjang belanja');
                 $('.shopping-cart > h4').css('margin-top','30px');
@@ -383,8 +408,8 @@
             }
         },
         error: function(xhr, status, error) {
-            console.error('Error:', error);
-            alert('Terjadi kesalahan saat memeriksa status login.');
+            // console.error('Error:', error);
+            // alert('Terjadi kesalahan saat memeriksa status login.');
         }}
     )};
 
@@ -431,7 +456,7 @@
             },
             error: function(xhr, status, error) {
                 console.log('Error:', error);
-                alert('Terjadi kesalahan saat memperbarui keranjang.');
+                // alert('Terjadi kesalahan saat memperbarui keranjang.');
             }
         });
     }    
@@ -509,7 +534,7 @@
                     },
                     error: function(xhr, status, error) {
                         console.error('Error:', error);
-                        alert('Terjadi kesalahan saat memuat keranjang.');
+                        // alert('Terjadi kesalahan saat memuat keranjang.');
                     }
                 });
             }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('alamat');      
             $table->string('no_telp', 15);      
             $table->bigInteger('final_price');      
+            $table->string('status_produk');      
             $table->timestamp('created_at')->useCurrent();
             $table->bigInteger('create_by');
             $table->timestamp('modified_at')->useCurrent()->useCurrentOnUpdate();

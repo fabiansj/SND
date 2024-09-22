@@ -16,6 +16,7 @@ class CartListAPIController extends Controller
         
         // dd($a);
         try {
+            $setJumlah = 0;
             DB::beginTransaction();
             if ($request->isMethod('put')) {
                 $getCartList = CartListRepository::getOnlyCartList($request->clid);
@@ -27,12 +28,12 @@ class CartListAPIController extends Controller
                     $setJumlah = $getCartList->jumlah;
                     $setJumlah++;
                 }
+                // dd($setJumlah);
                 
                 $payload = [
                     'clid' => $request->clid,
                     'jumlah' => intval($setJumlah),
                 ];
-
                 if($setJumlah == 0){
                     CartListRepository::deleteCartProduct($request->clid);
                 }else{

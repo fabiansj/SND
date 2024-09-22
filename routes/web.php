@@ -14,6 +14,8 @@ use App\Http\Controllers\API\ProductAPIController;
 use App\Http\Controllers\API\AuthAPIController;
 use App\Http\Controllers\API\CartListAPIController;
 use App\Http\Controllers\CheckoutTransaksiController;
+use App\Http\Controllers\KelolaProductController;
+use App\Http\Controllers\KelolaUserController;
 use App\Http\Repository\CheckoutTransaksiProductRepository;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +35,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/test', function () {
-    return view('testnotifikasi');
+    return view('kelola.layouts.all');
 });
 
 Route::redirect('index', '/');
@@ -67,8 +69,27 @@ Route::post('/checkout/product/now', [PaymentController::class, 'checkoutProdukN
 // Auth
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin'])->group(function () {
-        Route::get('/dashboard', [MasterDataController::class, 'index'])->name('dashboard.index');
+        Route::get('/dashboard', [MasterDataController::class, 'index'])->name('kelola.dashboard.index');
+        //product
+        Route::get('/kelola/produk', [KelolaProductController::class, 'index'])->name('kelola.products.index');
+        Route::get('/kelola/produk/create', [KelolaProductController::class, 'create'])->name('kelola.products.create');
+        Route::post('/kelola/produk', [KelolaProductController::class, 'store'])->name('kelola.products.store');
+        Route::get('/kelola/produk/edit/{id}', [KelolaProductController::class, 'edit'])->name('kelola.products.edit');
+        Route::put('/kelola/produk/{id}', [KelolaProductController::class, 'update'])->name('kelola.products.update');
+        Route::delete('/kelola/produk/{id}', [KelolaProductController::class, 'destroy'])->name('kelola.products.destroy');
+        Route::post('/kelola/produk', [KelolaProductController::class, 'getType'])->name('kelola.products.type');
+
+        // user
+        Route::get('/kelola/user', [KelolaUserController::class, 'index'])->name('kelola.user.index');
+        Route::get('/kelola/user/create', [KelolaUserController::class, 'create'])->name('kelola.user.create');
+        Route::post('/kelola/user', [KelolaUserController::class, 'store'])->name('kelola.user.store');
+        Route::get('/kelola/user/edit/{id}', [KelolaUserController::class, 'edit'])->name('kelola.user.edit');
+        Route::put('/kelola/user/{id}', [KelolaUserController::class, 'update'])->name('kelola.user.update');
+        Route::delete('/kelola/user/{id}', [KelolaUserController::class, 'destroy'])->name('kelola.user.destroy');
+        //rekap data
     });
+    
+    Route::post('/produk/status', [CheckoutTransaksiController::class, 'setStatusProduk'])->name('set.status.produk');
     Route::get('/payment/pending', [CheckoutTransaksiController::class, 'getPendingPayment'])->name('pending.payment.index');
     Route::get('/payment/pending/detail/{ctid}', [CheckoutTransaksiController::class, 'index'])->name('pending.detail.payment.index');
     Route::get('/payment/settlement', [CheckoutTransaksiController::class, 'getSettlementPayment'])->name('settlement.payment.index');
@@ -85,3 +106,6 @@ Route::get('/register', [AuthController::class, 'register'])->name('auth.registe
 Route::post('/login', [AuthAPIController::class, 'login'])->name('api.auth.login');
 Route::get('/logout', [AuthAPIController::class, 'logout'])->name('api.auth.logout');
 Route::post('/register', [AuthAPIController::class, 'register'])->name('api.auth.register');
+
+
+// admin

@@ -51,6 +51,11 @@ class CheckoutTransaksiRepository
         return $result;
     }
 
+    public static function updateStatusProduk($payload, $ctid){
+        $result = DB::table('checkout_transaksi')->where('ctid', $ctid)->update($payload);
+        return $result;
+    }
+
     public static function find($payload){
         $result = DB::select('SELECT * from checkout_transaksi where order_id = :order_id', ['order_id' => $payload]);
         return $result;
@@ -63,6 +68,11 @@ class CheckoutTransaksiRepository
 
     public static function getHasPaid($pid){
         $result = DB::select('SELECT * from checkout_transaksi where pid = :pid and status = "settlement" ', ['pid' => $pid]);
+        return $result;
+    }
+
+    public static function getHasPaidAll(){
+        $result = DB::select('SELECT * from checkout_transaksi WHERE status = "settlement" ');
         return $result;
     }
 

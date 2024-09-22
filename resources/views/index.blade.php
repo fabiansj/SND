@@ -24,7 +24,7 @@
                     <p>NEW PRODUCT</p>
                 </div>
                 <!-- <img src="../img/products/menu1.jpg" alt="expresso"> -->
-                <img src="{{ asset('img/products/' . $item->url_image) }}" alt="expresso">
+                <img src="{{ asset('img/products/' . $item->url_image) }}">
                 <div class="arrival-card-content">
                     <p class="arrival-card-price">IDR {{ number_format($item->harga, 0, ',', '.') }}</p>
                     <h3 class="arrival-card-title">
@@ -36,85 +36,6 @@
                 </div>
             </div>
             @endforeach
-            <div class="arrival-card">
-                <div class="arrival-new-product">
-                    <p>NEW PRODUCT</p>
-                </div>
-                <!-- <img src="../img/products/menu1.jpg" alt="expresso"> -->
-                <img src="{{ asset('img/products/7302velk_mx_king.png') }}" alt="expresso">
-                <div class="arrival-card-content">
-                    <p class="arrival-card-price">IDR 1.235.000</p>
-                    <h3 class="arrival-card-title">
-                        - SND RAPIDO-501 MX KING -
-                    </h3>
-                    <div class="arrival_detail_show">
-                        <a><I data-feather="search"></I> Detail Product</a>
-                    </div>
-                </div>
-            </div>
-            <div class="arrival-card">
-                <div class="arrival-new-product">
-                    <p>NEW PRODUCT</p>
-                </div>
-                <!-- <img src="../img/products/menu1.jpg" alt="expresso"> -->
-                <img src="{{ asset('img/products/7302velk_mx_king.png') }}" alt="expresso">
-                <div class="arrival-card-content">
-                    <p class="arrival-card-price">IDR 1.235.000</p>
-                    <h3 class="arrival-card-title">
-                        - SND RAPIDO-501 MX KING -
-                    </h3>
-                    <div class="arrival_detail_show">
-                        <a><I data-feather="search"></I> Detail Product</a>
-                    </div>
-                </div>
-            </div>
-            <div class="arrival-card">
-                <div class="arrival-new-product">
-                    <p>NEW PRODUCT</p>
-                </div>
-                <!-- <img src="../img/products/menu1.jpg" alt="expresso"> -->
-                <img src="{{ asset('img/products/7302velk_mx_king.png') }}" alt="expresso">
-                <div class="arrival-card-content">
-                    <p class="arrival-card-price">IDR 1.235.000</p>
-                    <h3 class="arrival-card-title">
-                        - SND RAPIDO-501 MX KING -
-                    </h3>
-                    <div class="arrival_detail_show">
-                        <a><I data-feather="search"></I> Detail Product</a>
-                    </div>
-                </div>
-            </div>
-            <div class="arrival-card">
-                <div class="arrival-new-product">
-                    <p>NEW PRODUCT</p>
-                </div>
-                <!-- <img src="../img/products/menu1.jpg" alt="expresso"> -->
-                <img src="{{ asset('img/products/7302velk_mx_king.png') }}" alt="expresso">
-                <div class="arrival-card-content">
-                    <p class="arrival-card-price">IDR 1.235.000</p>
-                    <h3 class="arrival-card-title">
-                        - SND RAPIDO-501 MX KING -
-                    </h3>
-                    <div class="arrival_detail_show">
-                        <a><I data-feather="search"></I> Detail Product</a>
-                    </div>
-                </div>
-            </div>
-            <div class="arrival-card">
-                <div class="arrival-new-product">
-                    <p>NEW PRODUCT</p>
-                </div>
-                <!-- <img src="../img/products/menu1.jpg" alt="expresso"> -->
-                <img src="{{ asset('img/products/7302velk_mx_king.png') }}" alt="expresso">
-                <div class="arrival-card-content">
-                    <p class="arrival-card-price">IDR 1.235.000</p>
-                    <h3 class="arrival-card-title">
-                        - SND RAPIDO-501 MX KING -
-                    </h3>
-                    <div class="arrival_detail_show">
-                        <a><I data-feather="search"></I> Detail Product</a>
-                    </div>
-                </div>
             </div>
         </div>
         {{-- <div class="arrival-button">

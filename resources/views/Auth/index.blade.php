@@ -5,7 +5,7 @@
         {{-- <div style="z-index:3;">
             <p>dsadsdadasdsad</p>
         </div> --}}
-    </div>    
+    </div>
     <form action="{{ route('api.auth.login')}}" method="POST">
         @csrf
         <label for="">Username</label>

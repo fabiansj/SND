@@ -65,6 +65,6 @@ class AuthAPIController extends Controller
     }
 
     public function checkLogin(){        
-        return response()->json(['loggedIn' => Auth::check()]);
+        return response()->json(['loggedIn' => Auth::check() ?? 'tidak login', 'role' => Auth::user()->role]);
     }
 }

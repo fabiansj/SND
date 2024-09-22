@@ -22,14 +22,18 @@
                         {{-- <img class="img-thumbnail" src="{{ asset('img/products/' . $item->url_image) }}"> --}}
                         <div class="product-content-riwayat">
                             <div class="product-price-riwayat"><span>Total : Rp {{ number_format($item->final_price, 0, ',', '.') }}</span></div>
+                            <div class="product-nama-riwayat"><p>Order ID : {{ $item->order_id }}</p></div>
                             <div class="product-nama-riwayat"><p>Nama penerima : {{ $item->nama }}</p></div>
                             <div class="product-nama-riwayat"><p>Alamat penerima : {{ $item->alamat }}</p></div>
-                            <div class="product-nama-riwayat"><p>No Telepon : {{ $item->no_telp }}</p></div>
+                            <div class="product-nama-riwayat"><p>No Telepon : {{ $item->no_telp }}</p></div>      
+                            <div class="product-nama-riwayat"><p>Status Produk : {{ $item->status_produk }}</p></div>                            
                             <div class="product-overflow-content-riwayat">
                                 <a href="{{ route('settlement.detail.payment.index', [$item->ctid]) }}"><i data-feather="alert-circle"></i>&#160;Detail
                                 </a>
-                                <a href="javascript:void(0);" id="pay-now" class="pay-now" data-snap-token="{{ $item->snap_token }}"><i data-feather="send"></i>&#160;Bayar
+                                @if(Auth::check() && Auth::user()->role === 'admin')
+                                <a id="status_sending" class="pay-now {{ $item->status_produk_id == 4 ? '' : 'status_produk'}}" data-status-id="{{ $item->status_produk_id }}" data-ctid="{{ $item->ctid }}" {{ $item->status_produk_id == 4 ? 'disabled' : ''}}><i data-feather="package"></i>&#160;{{ $item->status_produk }}
                                 </a>
+                                @endif                                
                             </div>
                         </div>
                     </div>
@@ -38,50 +42,29 @@
         </div>
     </section>    
     <!-- Product Section End -->
-    <script>
-    $('.add-to-cart').on('click', function(e) {
-        e.preventDefault();
-        var productId = $(this).data('product-id')
-        console.log('yes')
-
+    <script>    
+    $('.status_produk').on('click', function(e){
+        e.preventDefault()
+        console.log('ya ')
         $.ajax({
-            url: "{{ route('api.auth.checkLogin') }}",
-            type: 'GET',
-            success: function(response) {
-                if(response.loggedIn){            
-                    $.ajax({
-                        url: " {{ route('api.product.create') }} ",
-                        type: 'POST',
-                        data: {pid : productId, detail_produk : true},
-                        headers: {
-                            'X-CSRF-TOKEN': csrfToken
-                        },
-                        success: function(response) {
-                            // Tangani respons sukses
-                            console.log('Success:', response);
-                            alert('Produk telah berhasil ditambahkan ke keranjang.');
-                        },
-                        error: function(xhr, status, error) {
-                            // Tangani respons error
-                            console.log('Error:', error);
-                            alert('Terjadi kesalahan saat menambahkan produk ke keranjang.');
-                        }
-                    });
-                }else{
-                    alert('Anda perlu login untuk menambahkan produk.');
-                }
+            url: "{{ route('set.status.produk') }}",
+            type: 'POST',
+            data: {
+                status_id : $(this).data('status-id'), 
+                ctid : $(this).data('ctid'), 
+                _token : "{{ csrf_token() }}"
             },
-            error: function(respons){
-                console.log('Error:', response.error);
-                alert('Terjadi kesalahan saat memeriksa status login.');
+            success: function(response){
+                window.location.reload()
+            },
+            error: function(xhr, status, error){
+                console.log('Error:', error);
+                Swal.fire({
+                    title: "Gagal set status pengiriman produk",
+                    icon: "error"
+                });
             }
         })
-    });
-
-    $(document).on('click', '#pay-now', function(){
-        var snap_token = $(this).data('snap-token')
-        console.log(snap_token)
-        paymentNow(snap_token)
     })
     </script>
 @endsection

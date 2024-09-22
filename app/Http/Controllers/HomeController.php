@@ -8,7 +8,7 @@ use App\Http\Repository\ProductRepository;
 class HomeController extends Controller
 {
     public function index(){
-        $productDesc    = ProductRepository::index();
+        $productDesc    = ProductRepository::getLimit();
         $product        = ProductRepository::getAll();
         
         return view('index', compact(
