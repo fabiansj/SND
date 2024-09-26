@@ -21,14 +21,14 @@ class ProductAPIController extends Controller
         $pid    = Auth::user()->pid;        
         
         if($request->detail_produk == true){            
-            $data = ProductRepository::findID($request->pid);            
+            $data = ProductRepository::findID($request->prid);            
         }else{        
             $data = $request;
         }
         
-        $cekStok = ProductRepository::findID($request->pid);
+        $cekStok = ProductRepository::findID($request->prid);
         $cekTrans = abs(GLTransStockRepository::getStok($cekStok->prid));
-
+        dd($cekStok);
         try {
             DB::beginTransaction();
             
