@@ -28,7 +28,7 @@ class ProductAPIController extends Controller
         
         $cekStok = ProductRepository::findID($request->prid);
         $cekTrans = abs(GLTransStockRepository::getStok($cekStok->prid));
-        dd($cekStok);
+        // dd($cekStok);
         try {
             DB::beginTransaction();
             
