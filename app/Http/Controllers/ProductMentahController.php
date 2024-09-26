@@ -33,7 +33,7 @@ class ProductMentahController extends Controller
             ];
             $inven = ProductMentahRepository::insert($payload);
             DB::commit();            
-            return redirect()->route('kelola.inventaris.index')->with('status', 'Produk berhasil dihapus!');
+            return redirect()->route('kelola.inventaris.index')->with('success', 'Data Rekap berhasil ditambah!');
         } catch (\Throwable $e) {
             DB::rollBack();
             // Log the error message for debugging purposes
@@ -51,7 +51,7 @@ class ProductMentahController extends Controller
             DB::beginTransaction();                        
             $delete = ProductMentahRepository::delete($pmid);
             DB::commit();            
-            return redirect()->route('kelola.inventaris.index')->with('status', 'Produk berhasil dihapus!');
+            return redirect()->route('kelola.inventaris.index')->with('success', 'Data Rekap berhasil dihapus!');
 
         }catch (\Throwable $e){
             DB::rollBack();

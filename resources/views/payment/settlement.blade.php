@@ -31,7 +31,10 @@
                                 <a href="{{ route('settlement.detail.payment.index', [$item->ctid]) }}"><i data-feather="alert-circle"></i>&#160;Detail
                                 </a>
                                 @if(Auth::check() && Auth::user()->role === 'admin')
-                                <a id="status_sending" class="pay-now {{ $item->status_produk_id == 4 ? '' : 'status_produk'}}" data-status-id="{{ $item->status_produk_id }}" data-ctid="{{ $item->ctid }}" {{ $item->status_produk_id == 4 ? 'disabled' : ''}}><i data-feather="package"></i>&#160;{{ $item->status_produk }}
+                                <a id="status_sending" class="pay-now {{ $item->status_produk_id >= 3 ? '' : 'status_produk'}}" data-status-id="{{ $item->status_produk_id }}" data-ctid="{{ $item->ctid }}" {{ $item->status_produk_id == 3 ? 'disabled' : ''}}><i data-feather="package"></i>&#160;{{ $item->status_produk }}
+                                </a>
+                                @else
+                                <a id="status_sending" class="pay-now {{ $item->status_produk_id <> 3 ? '' : 'status_produk'}}" data-status-id="{{ $item->status_produk_id }}" data-ctid="{{ $item->ctid }}" {{ $item->status_produk_id == 4 ? 'disabled' : ''}}><i data-feather="package"></i>&#160;{{ $item->status_produk }}
                                 </a>
                                 @endif                                
                             </div>

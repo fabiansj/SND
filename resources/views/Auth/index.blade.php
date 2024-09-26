@@ -13,6 +13,11 @@
         {{-- <input type="text" id="email" name="email" required> --}}
         <label for="">Password</label>
         <input type="password" id="password" name="password" required>
+        @if(session('error'))
+            <div class="alert alert-success" style="text-align: center">
+                {{ session('error') }}
+            </div>
+        @endif
         <button id="login-account-button" type="submit">Masuk</button>
         <p class="text-center">Belum punya akun? <a href=" {{ route('auth.register') }}">Register</a> sekarang!</p>
     </form>

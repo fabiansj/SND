@@ -111,7 +111,7 @@ class KelolaUserController extends Controller
                 'modify_by'     => $pid,
             ]);
 
-        return redirect()->route('kelola.user.index')->with('success', 'Produk berhasil diperbarui.');
+        return redirect()->route('kelola.user.index')->with('success', 'User berhasil diperbarui.');
     }
 
     public function destroy($id)
@@ -121,7 +121,7 @@ class KelolaUserController extends Controller
             DB::table('pengguna')->where('pid', $id)->delete();
             return redirect()->route('kelola.user.index')->with('success', 'User berhasil dihapus.');
         }else{
-            return redirect()->route('kelola.user.index')->with('success', 'User gagal dihapus.');
+            return redirect()->route('kelola.user.index')->with('error', 'User gagal dihapus.');
         }
     }
 }

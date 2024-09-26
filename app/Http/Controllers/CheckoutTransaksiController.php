@@ -103,7 +103,7 @@ class CheckoutTransaksiController extends Controller
             case 2:
                 //sedang dipack
                 $payload = [
-                    'status_produk' => 'Diserahkan',
+                    'status_produk' => 'Dikirim',
                     'status_produk_id' => 3,
                 ];
                 CheckoutTransaksiRepository::updateStatusProduk($payload, $ctid);
@@ -111,7 +111,7 @@ class CheckoutTransaksiController extends Controller
             case 3:
                 //pengiriman ke jasa antra
                 $payload = [
-                    'status_produk' => 'Dikirim',
+                    'status_produk' => 'Diterima',
                     'status_produk_id' => 4,
                 ];
                 CheckoutTransaksiRepository::updateStatusProduk($payload, $ctid);

@@ -21,6 +21,6 @@ class PenggunaRepository
     }
 
     public static function getUsername($username){
-        return DB::select('SELECT * FROM PENGGUNA WHERE username = :username', ['username' => $username]);
+        return DB::select('SELECT * FROM pengguna WHERE username = :username', ['username' => $username]);
     }
 }
